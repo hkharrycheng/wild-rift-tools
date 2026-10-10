@@ -687,7 +687,7 @@ function getChampIconHtml(name, side='') {
   const img = getChampionImage(name);
   const initial = name ? name.charAt(0) : '?';
   if (img) {
-    return `<div class="fight-champ-icon ${side}"><img src="${img}" alt="${name}" onerror="this.parentElement.innerHTML='${initial}'"></div>`;
+    return `<div class="fight-champ-icon ${side}"><img src="${img}" alt="${name}" data-champ="${name}" class="fight-champ-img"></div>`;
   }
   return `<div class="fight-champ-icon ${side}">${initial}</div>`;
 }
@@ -738,7 +738,7 @@ function renderChampions() {
     poolChamps.forEach(champ => {
       const wr = champ.winRate ? (champ.winRate * 100).toFixed(1) + '%' : 'N/A';
       const imgHtml = champ.image 
-        ? `<img src="${champ.image}" alt="${champ.name}" onerror="this.parentElement.innerHTML='<span class=\\'champion-icon-placeholder\\'>${champ.name.charAt(0)}</span>'">`
+        ? `<img src="${champ.image}" alt="${champ.name}" data-champ="${champ.name}" class="champ-img">`
         : `<span class="champion-icon-placeholder">${champ.name.charAt(0)}</span>`;
       html += `<div class="champion-card" onclick="showFights('${champ.name}')">
         <div class="champion-icon">${imgHtml}</div>
@@ -750,6 +750,14 @@ function renderChampions() {
     html += '</div></div>';
   });
   container.innerHTML = html;
+  
+  // 處理圖片加載失敗
+  container.querySelectorAll('.champ-img').forEach(img => {
+    img.onerror = function() {
+      const champName = this.getAttribute('data-champ');
+      this.outerHTML = `<span class="champion-icon-placeholder">${champName ? champName.charAt(0) : '?'}</span>`;
+    };
+  });
 }
 
 // Fight Records
@@ -868,6 +876,14 @@ function renderFightList(fightsList) {
   }).join('');
   
   document.getElementById('modal-body').innerHTML = html;
+  
+  // 處理圖片加載失敗
+  document.querySelectorAll('.fight-champ-img').forEach(img => {
+    img.onerror = function() {
+      const champName = this.getAttribute('data-champ');
+      this.outerHTML = champName ? champName.charAt(0) : '?';
+    };
+  });
 }
 
 function changeSort(sortBy) {
