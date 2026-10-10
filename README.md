@@ -94,6 +94,11 @@ wild-rift-tools/
 
 ## 版本記錄
 
+### v1.01 (2026-10-10)
+- 修復 Fight Records 中 KDA 居中對齊問題
+- 補全 143 張 Champion Profile Picture（包括對手 Champion）
+- 修復 HIS Tools Main Page 工具連接（deployedPage 字段）
+
 ### v1.00 (2026-10-10)
 - 初始版本
 - My Pool Champions 圖庫展示
@@ -111,4 +116,4 @@ wild-rift-tools/
 
 ---
 
-Wild Rift Tools © 2026.1.00
+Wild Rift Tools © 2026.1.01
