@@ -93,6 +93,7 @@ wild-rift-tools/
 ```
 
 ## 版本記錄
+- v1.02 (2026-10-13): header 改用圖標相片 LOGO（移除 ⚔️ emoji）
 
 ### v1.01 (2026-10-10)
 - 修復 Fight Records 中 KDA 居中對齊問題
