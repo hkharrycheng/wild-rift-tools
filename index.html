@@ -27,38 +27,117 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.tabs {
+/* 底部 TAB（手機 FOOTER 模式） */
+.bottom-tabs {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 8px;
-  padding: 12px 20px;
-  background: #161b22;
-  border-bottom: 1px solid #30363d;
-  overflow-x: auto;
+  background: rgba(13, 17, 23, 0.96);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 300;
+  padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
 }
-.tab {
-  padding: 8px 16px;
-  border-radius: 8px;
+.bottom-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 4px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.55);
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  white-space: nowrap;
-  transition: all 0.2s;
-  background: transparent;
-  border: 1px solid transparent;
-  color: #8b949e;
+  border: none;
+  background: none;
+  font-family: inherit;
 }
-.tab.active {
-  background: #1f6feb;
-  color: white;
-  border-color: #1f6feb;
-}
-.tab:hover:not(.active) {
-  background: #21262d;
-  color: #e6edf3;
-}
-.content { padding: 20px; }
+.bottom-tab .tab-icon { font-size: 19px; line-height: 1.1; }
+.bottom-tab.active { color: #58a6ff; }
+.bottom-tab.active .tab-icon { transform: scale(1.08); }
+.content { padding: 20px 20px 84px; }
 .page { display: none; }
 .page.active { display: block; }
+
+/* News 圖庫 */
+.filter-bar {
+  display: flex;
+  gap: 6px;
+  padding: 4px 0 12px;
+  overflow-x: auto;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid #30363d;
+  background: transparent;
+  color: #8b949e;
+}
+.filter-btn.active {
+  background: linear-gradient(90deg, #58a6ff, #bc8cff);
+  border-color: transparent;
+  color: #000;
+  font-weight: bold;
+}
+.news-list { display: flex; flex-direction: column; gap: 10px; }
+.news-card {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s;
+}
+.news-card:active { transform: scale(0.99); }
+.news-thumb {
+  width: 88px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #21262d center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.news-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.news-meta { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #8b949e; }
+.news-badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+}
+.news-badge.official { background: rgba(88, 166, 255, 0.18); color: #58a6ff; }
+.news-badge.youtube { background: rgba(255, 69, 58, 0.18); color: #ff6b6b; }
+.news-date { margin-left: auto; }
+.news-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.news-empty {
+  text-align: center;
+  padding: 40px;
+  color: #8b949e;
+}
+.news-loading {
+  text-align: center;
+  padding: 40px;
+  color: #8b949e;
+}
 
 /* My Pool Page */
 .filters {
@@ -351,7 +430,7 @@ body {
   padding: 40px 20px;
 }
 
-/* Battle Assistant Page */
+/* Battle Page */
 .assistant-container {
   max-width: 600px;
   margin: 0 auto;
@@ -360,6 +439,9 @@ body {
   display: flex;
   align-items: flex-end;
   gap: 12px;
+  margin-bottom: 20px;
+}
+.lane-row {
   margin-bottom: 20px;
 }
 .selector-group {
@@ -618,26 +700,32 @@ body {
   <h1>Wild Rift Tools</h1>
 </div>
 
-<div class="tabs">
-  <div class="tab active" onclick="switchTab('assistant', this)">🤖 Battle Assistant</div>
-  <div class="tab" onclick="switchTab('pool', this)">🎯 My Pool</div>
-</div>
-
 <div class="content">
   <div id="page-assistant" class="page active">
     <div class="assistant-container">
+      <div class="lane-row">
+        <div class="selector-label">🛣️ 我嘅 Lane</div>
+        <select class="champion-select" id="lane-select" onchange="onLaneChange()">
+          <option value="">選擇 Lane...</option>
+          <option value="Top">Top</option>
+          <option value="Jungle">Jungle</option>
+          <option value="Mid">Mid</option>
+          <option value="Dragon">Dragon</option>
+          <option value="Support">Support</option>
+        </select>
+      </div>
       <div class="selector-row">
         <div class="selector-group">
-          <div class="selector-label">🎮 我用緊</div>
+          <div class="selector-label">⚔️ This Battle</div>
           <select class="champion-select" id="my-champion" onchange="checkMatchup()">
-            <option value="">選擇...</option>
+            <option value="">先選 Lane...</option>
           </select>
         </div>
         <div class="selector-vs">VS</div>
         <div class="selector-group">
-          <div class="selector-label">⚔️ 對手</div>
+          <div class="selector-label">💀 Enemy</div>
           <select class="champion-select" id="opponent-champion" onchange="checkMatchup()">
-            <option value="">選擇...</option>
+            <option value="">先選 Lane...</option>
           </select>
         </div>
       </div>
@@ -648,6 +736,15 @@ body {
   <div id="page-pool" class="page">
     <div class="filters" id="pool-filters"></div>
     <div id="champion-container"></div>
+  </div>
+
+  <div id="page-news" class="page">
+    <div class="filter-bar" id="news-filters">
+      <button class="filter-btn active" onclick="filterNews('all', this)">🔥 全部</button>
+      <button class="filter-btn" onclick="filterNews('official', this)">📢 官方</button>
+      <button class="filter-btn" onclick="filterNews('youtube', this)">▶ YouTube</button>
+    </div>
+    <div id="news-list" class="news-list"><div class="news-loading">📰 載入新聞中...</div></div>
   </div>
 </div>
 
@@ -661,7 +758,13 @@ body {
   </div>
 </div>
 
-<div class="footer">Wild Rift Tools © 2026.1.02</div>
+<div class="footer">Wild Rift Tools © 2026.1.03</div>
+
+<div class="bottom-tabs">
+  <button class="bottom-tab active" onclick="switchTab('assistant', this)"><span class="tab-icon">⚔️</span><span>Battle</span></button>
+  <button class="bottom-tab" onclick="switchTab('pool', this)"><span class="tab-icon">🏆</span><span>Champions</span></button>
+  <button class="bottom-tab" onclick="switchTab('news', this)"><span class="tab-icon">📰</span><span>News</span></button>
+</div>
 
 <script>
 let champions = [];
@@ -915,31 +1018,48 @@ function closeModal(event) {
   }
 }
 
-// Battle Assistant
+// Battle Page
+const EXTRA_ROLES = {
+  'Aatrox': 'Top', 'Akali': 'Mid', 'Akshan': 'Mid', 'Alistar': 'Support',
+  'Ambessa': 'Top', 'Amumu': 'Jungle', 'Annie': 'Mid'
+};
+
+function champRole(c) {
+  return c.role || EXTRA_ROLES[c.name] || 'Top';
+}
+
 function initAssistantPage() {
   const mySelect = document.getElementById('my-champion');
   const oppSelect = document.getElementById('opponent-champion');
-  
+  mySelect.innerHTML = '<option value="">先選 Lane...</option>';
+  oppSelect.innerHTML = '<option value="">先選 Lane...</option>';
+  document.getElementById('lane-select').value = '';
+}
+
+function onLaneChange() {
+  const lane = document.getElementById('lane-select').value;
+  const mySelect = document.getElementById('my-champion');
+  const oppSelect = document.getElementById('opponent-champion');
+  mySelect.innerHTML = '<option value="">選擇...' + (lane ? ' (' + lane + ')' : '') + '</option>';
+  oppSelect.innerHTML = '<option value="">選擇...' + (lane ? ' (' + lane + ')' : '') + '</option>';
+  if (!lane) {
+    checkMatchup();
+    return;
+  }
   // 排序: S+ > S > A > B > Owned > Unowned
   const poolOrder = {'S+': 0, 'S': 1, 'A': 2, 'B': 3, 'C': 4};
-  const sortedChamps = [...champions].sort((a, b) => {
-    const aOrder = poolOrder[a.myPool] !== undefined ? poolOrder[a.myPool] : 5;
-    const bOrder = poolOrder[b.myPool] !== undefined ? poolOrder[b.myPool] : 5;
-    if (aOrder !== bOrder) return aOrder - bOrder;
-    return a.name.localeCompare(b.name);
-  });
-  sortedChamps.forEach(c => {
+  const laneChamps = champions.filter(c => champRole(c) === lane)
+    .sort((a, b) => {
+      const aOrder = poolOrder[a.myPool] !== undefined ? poolOrder[a.myPool] : 5;
+      const bOrder = poolOrder[b.myPool] !== undefined ? poolOrder[b.myPool] : 5;
+      if (aOrder !== bOrder) return aOrder - bOrder;
+      return a.name.localeCompare(b.name);
+    });
+  laneChamps.forEach(c => {
     mySelect.innerHTML += `<option value="${c.name}">${c.name} (${c.myPool || 'Owned'})</option>`;
+    oppSelect.innerHTML += `<option value="${c.name}">${c.name}</option>`;
   });
-  
-  const allChampNames = [...new Set([
-    ...champions.map(c => c.name),
-    ...matchups.map(m => m.championA),
-    ...matchups.map(m => m.championB)
-  ])].filter(n => n).sort();
-  allChampNames.forEach(name => {
-    oppSelect.innerHTML += `<option value="${name}">${name}</option>`;
-  });
+  checkMatchup();
 }
 
 function getMatchupGuide(type, edge, lane) {
@@ -1121,13 +1241,73 @@ function checkMatchup() {
 }
 
 function switchTab(tab, el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.bottom-tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('page-' + tab).classList.add('active');
+  if (tab === 'news') loadNews();
+}
+
+// ===== News 圖庫（官方 news + YouTube playlist 統一鏡像 news-cache.json）=====
+let newsCache = { official: [], youtube: [] };
+let newsFilter = 'all';
+let newsLoaded = false;
+
+async function loadNews() {
+  if (newsLoaded) { renderNews(); return; }
+  const list = document.getElementById('news-list');
+  try {
+    const res = await fetch('news-cache.json?t=' + Date.now(), { cache: 'no-store' });
+    newsCache = await res.json();
+    newsLoaded = true;
+  } catch (e) {
+    newsCache = { official: [], youtube: [], error: '無法載入新聞鏡像' };
+  }
+  renderNews();
+}
+
+function filterNews(type, el) {
+  newsFilter = type;
+  document.querySelectorAll('#news-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderNews();
+}
+
+function renderNews() {
+  const list = document.getElementById('news-list');
+  if (!list) return;
+  if (newsCache.error) {
+    list.innerHTML = '<div class="news-empty">⚠️ ' + newsCache.error + '<br>請稍後再試</div>';
+    return;
+  }
+  const items = [];
+  (newsCache.official || []).forEach(n => {
+    items.push({ kind: 'official', title: n.title || '', url: n.url || '#', date: String(n.published || '').slice(0, 10), image: n.image || '', category: n.category || '官方' });
+  });
+  (newsCache.youtube || []).forEach(v => {
+    items.push({ kind: 'youtube', title: v.title || '', url: v.url || '#', date: String(v.published || '').slice(0, 10), image: v.thumbnail || '', category: '影片' });
+  });
+  const filtered = newsFilter === 'all' ? items : items.filter(i => i.kind === newsFilter);
+  filtered.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  if (!filtered.length) {
+    list.innerHTML = '<div class="news-empty">暫時冇新聞</div>';
+    return;
+  }
+  list.innerHTML = filtered.map(i => `
+    <a class="news-card" href="${i.url}" target="_blank" rel="noopener">
+      <div class="news-thumb"${i.image ? ' style="background-image:url(\'' + i.image + '\')"' : ''}>${i.kind === 'youtube' ? '▶️' : '📰'}</div>
+      <div class="news-body">
+        <div class="news-meta">
+          <span class="news-badge ${i.kind}">${i.kind === 'youtube' ? '▶ ' + i.category : i.category}</span>
+          <span class="news-date">${i.date}</span>
+        </div>
+        <div class="news-title">${i.title}</div>
+      </div>
+    </a>`).join('');
 }
 
 loadData();
+loadNews();
 </script>
 </body>
 </html>
