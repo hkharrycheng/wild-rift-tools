@@ -1023,6 +1023,15 @@ const EXTRA_ROLES = {
   'Aatrox': 'Top', 'Akali': 'Mid', 'Akshan': 'Mid', 'Alistar': 'Support',
   'Ambessa': 'Top', 'Amumu': 'Jungle', 'Annie': 'Mid'
 };
+// 有 matchup 數據但未入 Champions 表嘅 Top 英雄（dropdown 補齊用）
+const EXTRA_TOP_LANE = [
+  'Camille','Fiora','Gnar','Gragas','Gwen','Irelia','Jayce','Kayle',
+  'Kennen',"K'Santé",'Malphite','Maokai','Nasus','Olaf','Renekton','Riven',
+  'Singed','Sion','Volibear','Vladimir','Warwick','Yasuo','Yone'
+];
+function hasExtraTop(name){
+  return EXTRA_TOP_LANE.includes(name) && !champions.some(c => c.name === name);
+}
 
 function champRole(c) {
   return c.role || EXTRA_ROLES[c.name] || 'Top';
@@ -1049,6 +1058,7 @@ function onLaneChange() {
   // 排序: S+ > S > A > B > Owned > Unowned
   const poolOrder = {'S+': 0, 'S': 1, 'A': 2, 'B': 3, 'C': 4};
   const laneChamps = champions.filter(c => champRole(c) === lane)
+    .concat(lane === 'Top' ? EXTRA_TOP_LANE.filter(hasExtraTop).map(name => ({ name, role: 'Top', myPool: '' })) : [])
     .sort((a, b) => {
       const aOrder = poolOrder[a.myPool] !== undefined ? poolOrder[a.myPool] : 5;
       const bOrder = poolOrder[b.myPool] !== undefined ? poolOrder[b.myPool] : 5;
