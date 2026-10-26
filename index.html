@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <title>Wild Rift Tools</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,7 +29,6 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-/* 底部 TAB（手機 FOOTER 模式） */
 .bottom-tabs {
   position: fixed;
   bottom: 0;
@@ -60,646 +61,170 @@ body {
 .content { padding: 20px 20px 84px; }
 .page { display: none; }
 .page.active { display: block; }
-
-/* News 圖庫 */
-.filter-bar {
-  display: flex;
-  gap: 6px;
-  padding: 4px 0 12px;
-  overflow-x: auto;
-  flex-wrap: wrap;
-}
-.filter-btn {
-  padding: 5px 12px;
-  border-radius: 12px;
-  font-size: 13px;
-  cursor: pointer;
-  border: 1px solid #30363d;
-  background: transparent;
-  color: #8b949e;
-}
-.filter-btn.active {
-  background: linear-gradient(90deg, #58a6ff, #bc8cff);
-  border-color: transparent;
-  color: #000;
-  font-weight: bold;
-}
+.filter-bar { display: flex; gap: 6px; padding: 4px 0 12px; overflow-x: auto; flex-wrap: wrap; }
+.filter-btn { padding: 5px 12px; border-radius: 12px; font-size: 13px; cursor: pointer; border: 1px solid #30363d; background: transparent; color: #8b949e; }
+.filter-btn.active { background: linear-gradient(90deg, #58a6ff, #bc8cff); border-color: transparent; color: #000; font-weight: bold; }
 .news-list { display: flex; flex-direction: column; gap: 10px; }
-.news-card {
-  display: flex;
-  gap: 10px;
-  padding: 10px;
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 12px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.2s;
-}
+.news-card { display: flex; gap: 10px; padding: 10px; background: #161b22; border: 1px solid #30363d; border-radius: 12px; text-decoration: none; color: inherit; transition: all 0.2s; }
 .news-card:active { transform: scale(0.99); }
-.news-thumb {
-  width: 88px;
-  height: 60px;
-  flex-shrink: 0;
-  border-radius: 8px;
-  background: #21262d center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-}
+.news-thumb { width: 88px; height: 60px; flex-shrink: 0; border-radius: 8px; background: #21262d center/cover no-repeat; display: flex; align-items: center; justify-content: center; font-size: 20px; }
 .news-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .news-meta { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #8b949e; }
-.news-badge {
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 10px;
-  font-weight: 600;
-}
+.news-badge { padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; }
 .news-badge.official { background: rgba(88, 166, 255, 0.18); color: #58a6ff; }
 .news-badge.youtube { background: rgba(255, 69, 58, 0.18); color: #ff6b6b; }
 .news-date { margin-left: auto; }
-.news-title {
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.35;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-.news-empty {
-  text-align: center;
-  padding: 40px;
-  color: #8b949e;
-}
-.news-loading {
-  text-align: center;
-  padding: 40px;
-  color: #8b949e;
-}
-
-/* My Pool Page */
-.filters {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-}
-.filter-btn {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 13px;
-  cursor: pointer;
-  border: 1px solid #30363d;
-  background: #21262d;
-  color: #8b949e;
-  transition: all 0.2s;
-}
-.filter-btn.active {
-  background: #1f6feb;
-  color: white;
-  border-color: #1f6feb;
-}
-.pool-group {
-  margin-bottom: 24px;
-}
-.pool-title {
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.pool-badge {
-  padding: 2px 10px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 700;
-}
+.news-title { font-size: 14px; font-weight: 600; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.news-empty, .news-loading { text-align: center; padding: 40px; color: #8b949e; }
+.filters { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+.pool-group { margin-bottom: 24px; }
+.pool-title { font-size: 16px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.pool-badge { padding: 2px 10px; border-radius: 4px; font-size: 12px; font-weight: 700; }
 .pool-Splus { background: linear-gradient(135deg, #f85149, #da3633); color: white; }
 .pool-S { background: #f85149; color: white; }
 .pool-A { background: #d29922; color: white; }
 .pool-B { background: #3fb950; color: white; }
 .pool-C { background: #58a6ff; color: white; }
-.pool-count {
-  font-size: 12px;
-  background: #30363d;
-  padding: 2px 8px;
-  border-radius: 10px;
-  color: #8b949e;
-}
-.champion-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  gap: 12px;
-}
-.champion-card {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 12px;
-  padding: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  text-align: center;
-}
-.champion-card:hover {
-  border-color: #58a6ff;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2);
-}
-.champion-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  margin: 0 auto 8px;
-  background: linear-gradient(135deg, #30363d, #21262d);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 2px solid #30363d;
-}
-.champion-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.champion-icon-placeholder {
-  font-size: 24px;
-  font-weight: 700;
-  color: #58a6ff;
-}
-.champion-name {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 4px;
-}
-.champion-role {
-  font-size: 11px;
-  color: #8b949e;
-  margin-bottom: 4px;
-}
-.champion-wr {
-  font-size: 11px;
-  color: #3fb950;
-}
-
-/* Fight Records Modal */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.7);
-  z-index: 100;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.modal-overlay.active { display: flex; }
-.modal {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 16px;
-  width: 100%;
-  max-width: 700px;
-  max-height: 85vh;
-  overflow-y: auto;
-}
-.modal-header {
-  padding: 16px 20px;
-  border-bottom: 1px solid #30363d;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  background: #161b22;
-  z-index: 10;
-}
-.modal-title {
-  font-size: 18px;
-  font-weight: 700;
-}
-.modal-close {
-  background: none;
-  border: none;
-  color: #8b949e;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 4px 8px;
-}
-.modal-body { padding: 16px 20px; }
-.sort-bar {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
-  align-items: center;
-}
-.sort-label {
-  font-size: 13px;
-  color: #8b949e;
-}
-.sort-btn {
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
-  border: 1px solid #30363d;
-  background: #21262d;
-  color: #8b949e;
-  transition: all 0.2s;
-}
-.sort-btn.active {
-  background: #1f6feb;
-  color: white;
-  border-color: #1f6feb;
-}
-.sort-arrow {
-  font-size: 10px;
-  margin-left: 2px;
-}
-.fight-item {
-  background: #0d1117;
-  border: 1px solid #30363d;
-  border-radius: 10px;
-  padding: 14px;
-  margin-bottom: 10px;
-}
-.fight-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-.fight-grade {
-  font-size: 22px;
-  font-weight: 700;
-  color: #d29922;
-}
-.fight-meta {
-  text-align: right;
-}
-.fight-line {
-  font-size: 12px;
-  color: #8b949e;
-  background: #21262d;
-  padding: 2px 8px;
-  border-radius: 4px;
-  display: inline-block;
-  margin-bottom: 4px;
-}
-.fight-date {
-  font-size: 11px;
-  color: #6e7681;
-}
-.fight-vs-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom: 10px;
-  padding: 10px 0;
-  border-top: 1px solid #21262d;
-  border-bottom: 1px solid #21262d;
-}
-.fight-champ-side {
-  text-align: center;
-  flex: 1;
-}
-.fight-champ-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  margin: 0 auto 4px;
-  background: #30363d;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 2px solid #30363d;
-}
-.fight-champ-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.fight-champ-icon.me { border-color: #58a6ff; }
-.fight-champ-icon.opp { border-color: #f85149; }
-.fight-champ-name {
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-.fight-champ-kda {
-  font-size: 14px;
-  font-weight: 700;
-}
-.fight-champ-kda.me { color: #58a6ff; }
-.fight-champ-kda.opp { color: #f85149; }
-.fight-vs-text {
-  font-size: 16px;
-  font-weight: 700;
-  color: #6e7681;
-}
-.fight-details {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  font-size: 12px;
-}
-.fight-detail {
-  display: flex;
-  justify-content: space-between;
-}
-.fight-detail-label { color: #6e7681; }
-.fight-detail-value { color: #e6edf3; font-weight: 500; }
-.fight-link {
-  margin-top: 10px;
-  font-size: 12px;
-}
-.fight-link a {
-  color: #58a6ff;
-  text-decoration: none;
-}
-.fight-link a:hover { text-decoration: underline; }
-.no-fights {
-  text-align: center;
-  color: #8b949e;
-  padding: 40px 20px;
-}
-
-/* Battle Page */
-.assistant-container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-.selector-row {
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-.lane-row {
-  margin-bottom: 20px;
-}
-.selector-group {
-  flex: 1;
-}
-.selector-vs {
-  font-size: 18px;
-  font-weight: 700;
-  color: #6e7681;
-  padding-bottom: 12px;
-}
-.selector-label {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #8b949e;
-}
-.champion-select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #30363d;
-  background: #0d1117;
-  color: #e6edf3;
-  font-size: 15px;
-  cursor: pointer;
-}
-.champion-select:focus {
-  outline: none;
-  border-color: #58a6ff;
-}
-.champion-select option {
-  background: #161b22;
-  color: #e6edf3;
-  padding: 8px;
-}
-.matchup-result {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 12px;
-  padding: 20px;
-  margin-top: 20px;
-}
-.matchup-type {
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 12px;
-}
+.pool-count { font-size: 12px; background: #30363d; padding: 2px 8px; border-radius: 10px; color: #8b949e; }
+.champion-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+.champion-card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 12px; cursor: pointer; transition: all 0.2s; text-align: center; }
+.champion-card:hover { border-color: #58a6ff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(88, 166, 255, 0.2); }
+.champion-icon { width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 8px; background: linear-gradient(135deg, #30363d, #21262d); display: flex; align-items: center; justify-content: center; overflow: hidden; border: 2px solid #30363d; }
+.champion-icon img { width: 100%; height: 100%; object-fit: cover; }
+.champion-icon-placeholder { font-size: 24px; font-weight: 700; color: #58a6ff; }
+.champion-name { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.champion-role { font-size: 11px; color: #8b949e; margin-bottom: 4px; }
+.champion-wr { font-size: 11px; color: #3fb950; }
+.assistant-container { max-width: 600px; margin: 0 auto; }
+.selector-row { display: flex; align-items: flex-end; gap: 12px; margin-bottom: 20px; }
+.lane-row { margin-bottom: 20px; }
+.selector-group { flex: 1; }
+.selector-vs { font-size: 18px; font-weight: 700; color: #6e7681; padding-bottom: 12px; }
+.selector-label { font-size: 14px; font-weight: 600; margin-bottom: 8px; color: #8b949e; }
+.champion-select { width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #30363d; background: #0d1117; color: #e6edf3; font-size: 15px; cursor: pointer; }
+.champion-select:focus { outline: none; border-color: #58a6ff; }
+.champion-select option { background: #161b22; color: #e6edf3; padding: 8px; }
+.matchup-result { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 20px; margin-top: 20px; }
+.matchup-type { font-size: 24px; font-weight: 700; text-align: center; margin-bottom: 12px; }
 .matchup-type.hard-counter { color: #f85149; }
 .matchup-type.soft-counter { color: #d29922; }
 .matchup-type.even { color: #3fb950; }
 .matchup-type.farm { color: #58a6ff; }
-.matchup-edge {
-  text-align: center;
-  font-size: 14px;
-  color: #8b949e;
-  margin-bottom: 16px;
-}
-.no-matchup {
-  text-align: center;
-  padding: 20px;
-  background: #0d1117;
-  border-radius: 8px;
-  margin-bottom: 16px;
-}
-.no-matchup-text {
-  font-size: 14px;
-  color: #d29922;
-  margin-bottom: 4px;
-}
-.no-matchup-hint {
-  font-size: 12px;
-  color: #6e7681;
-}
-.matchup-source {
-  margin-top: 12px;
-  text-align: center;
-}
-.matchup-source a {
-  color: #58a6ff;
-  font-size: 12px;
-  text-decoration: none;
-}
-.matchup-source a:hover {
-  text-decoration: underline;
-}
-.matchup-vs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 16px;
-}
-.matchup-champ {
-  text-align: center;
-}
-.matchup-champ-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #30363d;
-  margin: 0 auto 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 700;
-  overflow: hidden;
-  border: 2px solid #30363d;
-}
-.matchup-champ-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+.matchup-edge { text-align: center; font-size: 14px; color: #8b949e; margin-bottom: 16px; }
+.no-matchup { text-align: center; padding: 20px; background: #0d1117; border-radius: 8px; margin-bottom: 16px; }
+.no-matchup-text { font-size: 14px; color: #d29922; margin-bottom: 4px; }
+.no-matchup-hint { font-size: 12px; color: #6e7681; }
+.matchup-source { margin-top: 12px; text-align: center; }
+.matchup-source a { color: #58a6ff; font-size: 12px; text-decoration: none; }
+.matchup-vs { display: flex; justify-content: center; align-items: center; gap: 20px; margin-bottom: 16px; }
+.matchup-champ { text-align: center; }
+.matchup-champ-icon { width: 56px; height: 56px; border-radius: 50%; background: #30363d; margin: 0 auto 6px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; overflow: hidden; border: 2px solid #30363d; }
+.matchup-champ-icon img { width: 100%; height: 100%; object-fit: cover; }
 .matchup-champ-icon.me { border-color: #58a6ff; }
 .matchup-champ-icon.opp { border-color: #f85149; }
-.matchup-champ-name {
-  font-size: 14px;
-  font-weight: 600;
-}
-.matchup-vs-text {
-  font-size: 18px;
-  font-weight: 700;
-  color: #8b949e;
-}
-.matchup-guide {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #30363d;
-}
-.matchup-guide-title {
-  font-size: 14px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  color: #bc8cff;
-}
-.matchup-guide-item {
-  margin-bottom: 10px;
-  padding: 8px 12px;
-  background: #0d1117;
-  border-radius: 8px;
-  border-left: 3px solid #30363d;
-}
+.matchup-champ-name { font-size: 14px; font-weight: 600; }
+.matchup-vs-text { font-size: 18px; font-weight: 700; color: #8b949e; }
+.matchup-guide { margin-top: 16px; padding-top: 16px; border-top: 1px solid #30363d; }
+.matchup-guide-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; color: #bc8cff; }
+.matchup-guide-item { margin-bottom: 10px; padding: 8px 12px; background: #0d1117; border-radius: 8px; border-left: 3px solid #30363d; }
 .matchup-guide-item.summary { border-left-color: #58a6ff; }
 .matchup-guide-item.howto { border-left-color: #3fb950; }
 .matchup-guide-item.lane { border-left-color: #d29922; }
 .matchup-guide-item.why { border-left-color: #f85149; }
-.matchup-guide-label {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  color: #8b949e;
-}
-.matchup-guide-text {
-  font-size: 13px;
-  color: #e6edf3;
-  line-height: 1.5;
-}
-.personal-records {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #30363d;
-}
-.records-side {
-  background: #0d1117;
-  border-radius: 10px;
-  padding: 12px;
-  border: 1px solid #30363d;
-  margin-bottom: 12px;
-}
-.records-side:last-child { margin-bottom: 0; }
+.matchup-guide-label { font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 4px; color: #8b949e; }
+.matchup-guide-text { font-size: 13px; color: #e6edf3; line-height: 1.5; }
+.personal-records { margin-top: 16px; padding-top: 16px; border-top: 1px solid #30363d; }
+.records-side { background: #0d1117; border-radius: 10px; padding: 12px; border: 1px solid #30363d; margin-bottom: 12px; }
 .records-side.me { border-top: 3px solid #58a6ff; }
 .records-side.opp { border-top: 3px solid #f85149; }
-.records-side-title {
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #8b949e;
-  text-align: center;
-}
-.records-stats {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 8px;
-}
-.records-stat {
-  text-align: center;
-}
-.records-stat-value {
-  font-size: 18px;
-  font-weight: 700;
-}
-.records-stat-label {
-  font-size: 10px;
-  color: #6e7681;
-}
-.records-vs {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  font-weight: 700;
-  color: #6e7681;
-}
+.records-side-title { font-size: 12px; font-weight: 600; margin-bottom: 8px; color: #8b949e; text-align: center; }
+.records-stats { display: flex; justify-content: space-around; margin-bottom: 8px; }
+.records-stat { text-align: center; }
+.records-stat-value { font-size: 18px; font-weight: 700; }
+.records-stat-label { font-size: 10px; color: #6e7681; }
 .win { color: #3fb950; }
 .loss { color: #f85149; }
-.record-mini {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 6px 10px;
-  background: #0d1117;
-  border-radius: 6px;
-  margin-bottom: 4px;
-  font-size: 12px;
-}
-.record-mini > span {
-  flex: 1;
-  text-align: center;
-  min-width: 0;
-}
-.record-mini > span:first-child {
-  text-align: left;
-}
-.record-mini > span:last-child {
-  text-align: right;
-}
-.record-mini-grade {
-  font-weight: 700;
-  color: #d29922;
-}
-.record-mini-opp {
-  color: #f85149;
-}
-.loading {
-  text-align: center;
-  padding: 40px;
-  color: #8b949e;
-}
-.footer {
-  text-align: center;
-  padding: 20px;
-  color: #484f58;
-  font-size: 12px;
-  border-top: 1px solid #21262d;
-  margin-top: 40px;
-}
+.record-mini { display: flex; justify-content: space-between; align-items: center; padding: 6px 10px; background: #0d1117; border-radius: 6px; margin-bottom: 4px; font-size: 12px; }
+.record-mini > span { flex: 1; text-align: center; min-width: 0; }
+.record-mini > span:first-child { text-align: left; }
+.record-mini > span:last-child { text-align: right; }
+.record-mini-grade { font-weight: 700; color: #d29922; }
+.record-mini-opp { color: #f85149; }
+.loading { text-align: center; padding: 40px; color: #8b949e; }
+.footer { text-align: center; padding: 20px; color: #484f58; font-size: 12px; border-top: 1px solid #21262d; margin-top: 40px; }
+.fights-toolbar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+.filt-select { flex: 1; min-width: 100px; padding: 7px 10px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; color: #e6edf3; font-size: 12px; cursor: pointer; }
+.filt-select:focus { outline: none; border-color: #1f6feb; }
+#fights-summary { background: linear-gradient(135deg, #0f1f3d 0%, #0d1117 100%) !important; border: 1px solid #1f3a5f !important; border-radius: 12px !important; padding: 16px 20px !important; margin-bottom: 12px !important; display: flex !important; flex-direction: row !important; gap: 24px !important; align-items: center !important; flex-wrap: nowrap !important; }
+#fights-summary .sum-left { display: flex !important; align-items: center !important; gap: 14px !important; flex-shrink: 0 !important; }
+#fights-summary .sum-pic { width: 72px !important; height: 72px !important; border-radius: 12px !important; border: 2px solid #1f6feb !important; object-fit: cover !important; background: #1f2937 !important; flex-shrink: 0 !important; }
+#fights-summary .sum-name { font-size: 16px !important; font-weight: 700 !important; color: #fff !important; }
+#fights-summary .sum-sub { font-size: 11px !important; color: #8b949e !important; margin-top: 2px !important; }
+#fights-summary .sum-badges { display: flex !important; gap: 10px !important; flex-shrink: 0 !important; }
+#fights-summary .badge { background: rgba(0,0,0,0.4) !important; border: 1px solid #30363d !important; border-radius: 8px !important; padding: 8px 14px !important; text-align: center !important; min-width: 60px !important; }
+#fights-summary .badge .big { font-size: 20px !important; font-weight: 800 !important; color: #f0b429 !important; display: block !important; line-height: 1.2 !important; }
+#fights-summary .badge .small { font-size: 9px !important; color: #8b949e !important; text-transform: uppercase !important; }
+#fights-summary .badge.a .big { color: #58a6ff !important; }
+#fights-summary .sum-bars { flex: 1 !important; display: flex !important; flex-direction: column !important; gap: 6px !important; min-width: 0 !important; }
+#fights-summary .bar-row { display: flex !important; align-items: center !important; gap: 8px !important; font-size: 11px !important; }
+#fights-summary .bar-lbl { width: 100px !important; color: #8b949e !important; text-align: right !important; flex-shrink: 0 !important; }
+#fights-summary .bar-track { flex: 1 !important; height: 6px !important; background: rgba(255,255,255,0.06) !important; border-radius: 3px !important; overflow: hidden !important; }
+#fights-summary .bar-fill { height: 100% !important; background: linear-gradient(90deg, #1f6feb, #58a6ff) !important; border-radius: 3px !important; }
+#fights-summary .bar-val { width: 70px !important; color: #e6edf3 !important; font-weight: 600 !important; flex-shrink: 0 !important; }
+.fight-item { margin-bottom: 14px; background: #161b22; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; transition: border-color 0.2s; }
+.fight-item:hover { border-color: #1f6feb; }
+.fight-date-banner { background: linear-gradient(90deg, #1f3a5f33, #161b22); padding: 8px 16px; font-size: 12px; color: #8b949e; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #21262d; }
+.fight-body { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 16px 20px; }
+.fight-left { min-width: 0; }
+.fight-main { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.fight-main .fight-side.me { flex: 1; justify-content: flex-start; }
+.fight-main .fight-side.opp { flex: 1; justify-content: flex-end; text-align: right; }
+.fight-side { display: flex; align-items: center; gap: 10px; }
+.fight-side.me { justify-content: flex-start; }
+.fight-side.opp { justify-content: flex-end; text-align: right; }
+.fight-side .fight-champ-name { font-size: 16px; font-weight: 600; color: #e6edf3; }
+.fight-side .fight-champ-kda { font-size: 13px; color: #8b949e; }
+.fight-side.me .fight-champ-kda { color: #58a6ff; font-weight: 700; font-size: 15px; }
+.fight-side.opp .fight-champ-kda { color: #ff6b6b; font-weight: 600; font-size: 14px; }
+.fight-vs-text { font-size: 12px; color: #484f58; font-weight: 700; }
+.fight-grade-badge { font-size: 28px; font-weight: 900; min-width: 40px; text-align: center; text-shadow: 0 0 10px currentColor; }
+.fight-meta-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.fight-meta-spacer { flex: 1; }
+.fight-meta-text { font-size: 12px; color: #8b949e; }
+.fight-screenshots { display: flex; flex-direction: row; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.fight-shot { width: 280px; flex-shrink: 0; border-radius: 8px; border: 1px solid #30363d; cursor: pointer; }
+.fight-champ-img { width: 40px; height: 40px; border-radius: 50%; background: #30363d; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; color: #e6edf3; object-fit: cover; }
+.fight-champ-img.opp { border: 2px solid #ff6b6b66; }
+.fight-champ-img.me { border: 2px solid #58a6ff66; }
+.fight-stats { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 8px; background: #0d1117; border-radius: 8px; }
+.fight-stat { text-align: center; }
+.fight-stat .lbl { color: #6e7681; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3px; }
+.fight-stat .val { color: #e6edf3; font-weight: 700; font-size: 15px; }
+.fight-right { display: flex; flex-direction: column; gap: 8px; justify-content: center; }
+.fight-vid-link { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 6px; background: rgba(255, 69, 58, 0.15); color: #ff6b6b; text-decoration: none; font-size: 12px; align-self: flex-start; }
+.no-fights { text-align: center; color: #6e7681; padding: 40px; }
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 99999; justify-content: center; align-items: center; cursor: zoom-out; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 95vw; max-height: 95vh; border-radius: 8px; }
+.pool-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.pool-header .filters { flex: 1; margin-bottom: 0; }
+.refresh-btn { padding: 6px 12px; background: #238636; color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; white-space: nowrap; }
+.refresh-btn:hover { background: #2ea043; }
+.refresh-btn:disabled { background: #30363d; cursor: wait; }
+.refresh-toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); background: #238636; color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 13px; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.4); }
+.refresh-toast.err { background: #da3633; }
+.sort-bar { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+.sort-label { font-size: 13px; color: #8b949e; }
+.sort-btn { padding: 4px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid #30363d; background: #21262d; color: #8b949e; }
+.sort-btn.active { background: #1f6feb; color: white; border-color: #1f6feb; }
+.sort-arrow { font-size: 10px; margin-left: 2px; }
 </style>
 </head>
 <body>
-
 <div class="header">
   <img src="logo.jpg" alt="HIS Tools" style="width:34px;height:34px;border-radius:8px;object-fit:contain;flex-shrink:0">
   <h1>Wild Rift Tools</h1>
 </div>
-
 <div class="content">
   <div id="page-assistant" class="page active">
     <div class="assistant-container">
@@ -717,27 +242,39 @@ body {
       <div class="selector-row">
         <div class="selector-group">
           <div class="selector-label">⚔️ This Battle</div>
-          <select class="champion-select" id="my-champion" onchange="checkMatchup()">
-            <option value="">先選 Lane...</option>
-          </select>
+          <select class="champion-select" id="my-champion" onchange="checkMatchup()"><option value="">先選 Lane...</option></select>
         </div>
         <div class="selector-vs">VS</div>
         <div class="selector-group">
           <div class="selector-label">💀 Enemy</div>
-          <select class="champion-select" id="opponent-champion" onchange="checkMatchup()">
-            <option value="">先選 Lane...</option>
-          </select>
+          <select class="champion-select" id="opponent-champion" onchange="checkMatchup()"><option value="">先選 Lane...</option></select>
         </div>
       </div>
       <div id="matchup-result"></div>
     </div>
   </div>
-
   <div id="page-pool" class="page">
-    <div class="filters" id="pool-filters"></div>
+    <div class="pool-header">
+      <div class="filters" id="pool-filters"></div>
+      <button class="refresh-btn" onclick="refreshData('pool')" title="從雲端更新">↻ Refresh</button>
+    </div>
     <div id="champion-container"></div>
   </div>
-
+  <div id="page-fights" class="page">
+    <div id="fights-summary"></div>
+    <div class="fights-toolbar">
+      <select id="filt-champ" class="filt-select" onchange="onFiltChange()"><option value="">全部英雄</option></select>
+      <select id="filt-lane" class="filt-select" onchange="onFiltChange()">
+        <option value="">全部Lane</option>
+        <option>Top</option><option>Jungle</option><option>Mid</option><option>Dragon</option><option>Support</option>
+      </select>
+      <select id="filt-type" class="filt-select" onchange="onFiltChange()"><option value="">全部類型</option></select>
+      <button class="refresh-btn" onclick="resetFilt()" style="background:#6e7681;" title="重置">↺ Reset</button>
+      <button class="refresh-btn" onclick="refreshData('fights')" title="從雲端更新">↻ Refresh</button>
+    </div>
+    <div class="sort-bar" id="fights-sortbar"></div>
+    <div id="fights-list"></div>
+  </div>
   <div id="page-news" class="page">
     <div class="filter-bar" id="news-filters">
       <button class="filter-btn active" onclick="filterNews('all', this)">🔥 全部</button>
@@ -747,577 +284,185 @@ body {
     <div id="news-list" class="news-list"><div class="news-loading">📰 載入新聞中...</div></div>
   </div>
 </div>
-
-<div class="modal-overlay" id="fight-modal" onclick="closeModal(event)">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-header">
-      <div class="modal-title" id="modal-title">Fight Records</div>
-      <button class="modal-close" onclick="closeModal()">&times;</button>
-    </div>
-    <div class="modal-body" id="modal-body"></div>
-  </div>
-</div>
-
 <div class="footer">Wild Rift Tools © 2026.1.03</div>
-
 <div class="bottom-tabs">
   <button class="bottom-tab active" onclick="switchTab('assistant', this)"><span class="tab-icon">⚔️</span><span>Battle</span></button>
   <button class="bottom-tab" onclick="switchTab('pool', this)"><span class="tab-icon">🏆</span><span>Champions</span></button>
+  <button class="bottom-tab" onclick="switchTab('fights', this)"><span class="tab-icon">🎯</span><span>Fights</span></button>
   <button class="bottom-tab" onclick="switchTab('news', this)"><span class="tab-icon">📰</span><span>News</span></button>
 </div>
-
 <script>
-let champions = [];
-let fights = [];
-let matchups = [];
-let currentPoolFilter = 'all';
-let currentSort = 'date';
-let sortDirection = 'desc';
-let currentChampion = '';
-
-async function loadData() {
-  try {
-    const [champRes, fightRes, matchupRes] = await Promise.all([
-      fetch('champions.json'),
-      fetch('fights.json'),
-      fetch('matchups.json')
-    ]);
-    champions = await champRes.json();
-    fights = await fightRes.json();
-    matchups = await matchupRes.json();
-    initPoolPage();
-    initAssistantPage();
-  } catch (err) {
-    console.error('載入數據失敗:', err);
-    document.getElementById('champion-container').innerHTML = '<div class="loading">載入中...</div>';
+let champions=[],fights=[],matchups=[];
+let currentPoolFilter='all',currentSort='fightDate',sortDirection='desc';
+let filtChamp='',filtLane='',filtType='',fightsSortTouched=false;
+const WORKER='https://j07-wr-proxy.hkharrycheng.workers.dev';
+async function loadData(){
+  document.getElementById('champion-container').innerHTML='<div class="loading">⚔️ 載入英雄數據中...</div>';
+  try{
+    const useWorker=localStorage.getItem('j07_worker')!=='off';
+    const [fr,cr,mr]=await Promise.all([fetch(useWorker?WORKER+'/fights':'fights.json'),fetch(useWorker?WORKER+'/champions':'champions.json'),fetch('matchups.json')]);
+    fights=await fr.json();let wc=await cr.json();matchups=await mr.json();
+    if(!wc||!wc.length){champions=await(await fetch('champions.json')).json();}else{champions=wc;}
+    if(useWorker){fights=fights.map(f=>({...f,screenshots:(f.screenshots||[]).map(s=>WORKER+'/shot?file_token='+s.file_token)}));}
+    initPoolPage();initAssistantPage();initFightsTab();
+  }catch(err){
+    try{
+      const [cr,fr,mr]=await Promise.all([fetch('champions.json'),fetch('fights.json'),fetch('matchups.json')]);
+      champions=await cr.json();fights=await fr.json();matchups=await mr.json();
+      initPoolPage();initAssistantPage();initFightsTab();
+    }catch(e2){document.getElementById('champion-container').innerHTML='<div class="loading">載入失敗: '+e2.message+'</div>';}
   }
 }
-
-function getChampionImage(name) {
-  const champ = champions.find(c => c.name === name);
-  return champ ? champ.image : '';
-}
-
-function getChampIconHtml(name, side='') {
-  const img = getChampionImage(name);
-  const initial = name ? name.charAt(0) : '?';
-  if (img) {
-    return `<div class="fight-champ-icon ${side}"><img src="${img}" alt="${name}" data-champ="${name}" class="fight-champ-img"></div>`;
-  }
+function getChampionImage(n){return n?`champion-images/${n}.webp`:'';}
+function getChampIconHtml(name,side=''){
+  const img=getChampionImage(name),initial=name?name.charAt(0):'?';
+  if(img)return `<div class="fight-champ-icon ${side}"><img src="${img}" alt="${name}" data-champ="${name}" class="fight-champ-img"></div>`;
   return `<div class="fight-champ-icon ${side}">${initial}</div>`;
 }
-
-// My Pool Page
-function initPoolPage() {
-  const pools = [...new Set(champions.map(c => c.myPool).filter(p => p))];
-  const poolOrder = ['S+', 'S', 'A', 'B', 'C'];
-  const sortedPools = poolOrder.filter(p => pools.includes(p)).concat(pools.filter(p => !poolOrder.includes(p)));
-  const filtersHtml = '<button class="filter-btn active" onclick="filterPool(\'all\')">全部</button>' +
-    sortedPools.map(p => `<button class="filter-btn" onclick="filterPool('${p}')">${p}</button>`).join('');
-  document.getElementById('pool-filters').innerHTML = filtersHtml;
+function initPoolPage(){
+  const pools=[...new Set(champions.map(c=>c.myPool).filter(p=>p))];
+  const order=['S+','S','A','B','C'];
+  const sp=order.filter(p=>pools.includes(p)).concat(pools.filter(p=>!order.includes(p)));
+  document.getElementById('pool-filters').innerHTML='<button class="filter-btn active" onclick="filterPool(\'all\')">全部</button>'+sp.map(p=>`<button class="filter-btn" onclick="filterPool(\'${p}\')">${p}</button>`).join('');
   renderChampions();
 }
-
-function filterPool(pool) {
-  currentPoolFilter = pool;
-  document.querySelectorAll('.filter-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent === pool || (pool === 'all' && btn.textContent === '全部'));
-  });
-  renderChampions();
-}
-
-function getPoolClass(pool) {
-  if (pool === 'S+') return 'pool-Splus';
-  return 'pool-' + pool.charAt(0);
-}
-
-function renderChampions() {
-  const container = document.getElementById('champion-container');
-  const filtered = currentPoolFilter === 'all' 
-    ? champions 
-    : champions.filter(c => c.myPool === currentPoolFilter);
-  
-  const poolOrder = ['S+', 'S', 'A', 'B', 'C'];
-  const pools = [...new Set(filtered.map(c => c.myPool).filter(p => p))];
-  const sortedPools = poolOrder.filter(p => pools.includes(p)).concat(pools.filter(p => !poolOrder.includes(p)));
-  
-  let html = '';
-  sortedPools.forEach(pool => {
-    const poolChamps = filtered.filter(c => c.myPool === pool);
-    html += `<div class="pool-group">
-      <div class="pool-title">
-        <span class="pool-badge ${getPoolClass(pool)}">${pool}</span>
-        <span class="pool-count">${poolChamps.length} 個</span>
-      </div>
-      <div class="champion-grid">`;
-    poolChamps.forEach(champ => {
-      const wr = champ.winRate ? (champ.winRate * 100).toFixed(1) + '%' : 'N/A';
-      const imgHtml = champ.image 
-        ? `<img src="${champ.image}" alt="${champ.name}" data-champ="${champ.name}" class="champ-img">`
-        : `<span class="champion-icon-placeholder">${champ.name.charAt(0)}</span>`;
-      html += `<div class="champion-card" onclick="showFights('${champ.name}')">
-        <div class="champion-icon">${imgHtml}</div>
-        <div class="champion-name">${champ.name}</div>
-        <div class="champion-role">${champ.role || 'N/A'}</div>
-        <div class="champion-wr">WR: ${wr}</div>
-      </div>`;
+function filterPool(p){currentPoolFilter=p;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.textContent===p||(p==='all'&&b.textContent==='全部')));renderChampions();}
+function getPoolClass(p){return p==='S+'?'pool-Splus':'pool-'+p.charAt(0);}
+function renderChampions(){
+  const c=document.getElementById('champion-container');
+  const f=currentPoolFilter==='all'?champions:champions.filter(x=>x.myPool===currentPoolFilter);
+  const order=['S+','S','A','B','C'];const pools=[...new Set(f.map(x=>x.myPool).filter(p=>p))];
+  const sp=order.filter(p=>pools.includes(p)).concat(pools.filter(p=>!order.includes(p)));
+  let h='';
+  sp.forEach(pool=>{
+    const pc=f.filter(x=>x.myPool===pool);
+    h+=`<div class="pool-group"><div class="pool-title"><span class="pool-badge ${getPoolClass(pool)}">${pool}</span><span class="pool-count">${pc.length} 個</span></div><div class="champion-grid">`;
+    pc.forEach(ch=>{
+      const wr=ch.winRate?(ch.winRate*100).toFixed(1)+'%':'N/A';
+      const ih=ch.image?`<img src="${ch.image}" alt="${ch.name}" data-champ="${ch.name}" class="champ-img">`:`<span class="champion-icon-placeholder">${ch.name.charAt(0)}</span>`;
+      h+=`<div class="champion-card" onclick="showFights('${ch.name}')"><div class="champion-icon">${ih}</div><div class="champion-name">${ch.name}</div><div class="champion-role">${ch.role||'N/A'}</div><div class="champion-wr">WR: ${wr}</div></div>`;
     });
-    html += '</div></div>';
+    h+='</div></div>';
   });
-  container.innerHTML = html;
-  
-  // 處理圖片加載失敗
-  container.querySelectorAll('.champ-img').forEach(img => {
-    img.onerror = function() {
-      const champName = this.getAttribute('data-champ');
-      this.outerHTML = `<span class="champion-icon-placeholder">${champName ? champName.charAt(0) : '?'}</span>`;
-    };
-  });
+  c.innerHTML=h;
+  c.querySelectorAll('.champ-img').forEach(img=>{img.onerror=function(){const n=this.getAttribute('data-champ');this.outerHTML=`<span class="champion-icon-placeholder">${n?n.charAt(0):'?'}</span>`;};});
 }
-
-// Fight Records
-function showFights(champName) {
-  currentChampion = champName;
-  const champFights = fights.filter(f => f.champion === champName);
-  document.getElementById('modal-title').textContent = `${champName} - Fight Records (${champFights.length})`;
-  
-  if (champFights.length === 0) {
-    document.getElementById('modal-body').innerHTML = '<div class="no-fights">暫無戰績記錄</div>';
-    document.getElementById('fight-modal').classList.add('active');
-    return;
-  }
-  renderFightList(champFights);
-  document.getElementById('fight-modal').classList.add('active');
+function showFights(n){filtChamp=n;filtLane='';filtType='';document.getElementById('filt-champ').value=n;document.getElementById('filt-lane').value='';document.getElementById('filt-type').value='';document.querySelectorAll('.bottom-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelector('.bottom-tab:nth-child(3)').classList.add('active');document.getElementById('page-fights').classList.add('active');renderFightsTab();}
+function initFightsTab(){
+  const s=document.getElementById('filt-champ');
+  s.innerHTML='<option value="">全部英雄</option>'+[...new Set(fights.map(f=>f.champion).filter(Boolean))].sort().map(c=>`<option value="${c}">${c}</option>`).join('');
+  const types=[...new Set(fights.map(f=>f.opponentMatchupType).filter(Boolean))].sort();
+  document.getElementById('filt-type').innerHTML='<option value="">全部類型</option>'+types.map(t=>`<option value="${t}">${t}</option>`).join('');
+  renderFightsTab();
 }
-
-function sortFights(fightsList, sortBy, direction) {
-  const sorted = [...fightsList];
-  const dir = direction === 'desc' ? -1 : 1;
-  switch(sortBy) {
-    case 'date':
-      sorted.sort((a, b) => dir * ((b.fightDate || 0) - (a.fightDate || 0)));
-      break;
-    case 'season':
-      sorted.sort((a, b) => dir * ((b.season || 0) - (a.season || 0)));
-      break;
-    case 'grade':
-      const gradeOrder = {'S+': 0, 'S': 1, 'A+': 2, 'A': 3, 'B+': 4, 'B': 5, 'C+': 6, 'C': 7, 'D': 8};
-      sorted.sort((a, b) => dir * ((gradeOrder[a.grade] || 99) - (gradeOrder[b.grade] || 99)));
-      break;
-    case 'kills':
-      sorted.sort((a, b) => dir * ((b.kills || 0) - (a.kills || 0)));
-      break;
-  }
-  return sorted;
-}
-
-function renderFightList(fightsList) {
-  const sorted = sortFights(fightsList, currentSort, sortDirection);
-  const arrow = sortDirection === 'desc' ? '↓' : '↑';
-  
-  const sortBtns = [
-    {id: 'date', label: 'Fight Date'},
-    {id: 'season', label: 'Season'},
-    {id: 'grade', label: 'Grade'},
-    {id: 'kills', label: 'Kills'}
-  ].map(s => `<button class="sort-btn ${currentSort === s.id ? 'active' : ''}" onclick="changeSort('${s.id}')">${s.label}${currentSort === s.id ? `<span class="sort-arrow">${arrow}</span>` : ''}</button>`).join('');
-  
-  const html = `<div class="sort-bar">
-    <span class="sort-label">Sort by:</span>
-    ${sortBtns}
-  </div>` + sorted.map(f => {
-    const dateStr = f.fightDate ? new Date(f.fightDate).toLocaleDateString('zh-HK') : 'N/A';
-    const myKda = `${f.kills}/${f.deaths}/${f.assists}`;
-    const oppKda = `${f.opponentKills}/${f.opponentDeaths}/${f.opponentAssists}`;
-    const oppName = f.opponentChampion || 'Unknown';
-    
-    return `<div class="fight-item">
-      <div class="fight-header">
-        <span class="fight-grade">${f.grade || 'N/A'}</span>
-        <div class="fight-meta">
-          <span class="fight-line">${f.line || 'N/A'} | S${f.season || '?'}</span>
-          <div class="fight-date">${dateStr}</div>
-        </div>
-      </div>
-      <div class="fight-vs-row">
-        <div class="fight-champ-side">
-          ${getChampIconHtml(f.champion, 'me')}
-          <div class="fight-champ-name">${f.champion}</div>
-          <div class="fight-champ-kda me">${myKda}</div>
-        </div>
-        <div class="fight-vs-text">VS</div>
-        <div class="fight-champ-side">
-          ${getChampIconHtml(oppName, 'opp')}
-          <div class="fight-champ-name">${oppName}</div>
-          <div class="fight-champ-kda opp">${oppKda}</div>
-        </div>
-      </div>
-      <div class="fight-details">
-        <div class="fight-detail">
-          <span class="fight-detail-label">Gold</span>
-          <span class="fight-detail-value">${f.goldEarned || 'N/A'}</span>
-        </div>
-        <div class="fight-detail">
-          <span class="fight-detail-label">Damage</span>
-          <span class="fight-detail-value">${f.damageDealt || 'N/A'}</span>
-        </div>
-        <div class="fight-detail">
-          <span class="fight-detail-label">Team Fight</span>
-          <span class="fight-detail-value">${f.teamFightPresence ? f.teamFightPresence + '%' : 'N/A'}</span>
-        </div>
-        <div class="fight-detail">
-          <span class="fight-detail-label">CC Time</span>
-          <span class="fight-detail-value">${f.ccDuration || 'N/A'}s</span>
-        </div>
-        <div class="fight-detail">
-          <span class="fight-detail-label">Wards</span>
-          <span class="fight-detail-value">${f.wards || 0}</span>
-        </div>
-        <div class="fight-detail">
-          <span class="fight-detail-label">Towers</span>
-          <span class="fight-detail-value">${f.towerDestroyed || 0}</span>
-        </div>
-        <div class="fight-detail">
-          <span class="fight-detail-label">Epic Monster</span>
-          <span class="fight-detail-value">${f.epicMonster || 0}</span>
-        </div>
-        <div class="fight-detail">
-          <span class="fight-detail-label">對局類型</span>
-          <span class="fight-detail-value">${f.opponentMatchupType || 'N/A'}</span>
-        </div>
-      </div>
-      ${f.link ? `<div class="fight-link"><a href="${f.link}" target="_blank">📺 觀看影片</a></div>` : ''}
-    </div>`;
+function onFiltChange(){filtChamp=document.getElementById('filt-champ').value;filtLane=document.getElementById('filt-lane').value;filtType=document.getElementById('filt-type').value;fightsSortTouched=false;renderFightsTab();}
+function resetFilt(){filtChamp='';filtLane='';filtType='';document.getElementById('filt-champ').value='';document.getElementById('filt-lane').value='';document.getElementById('filt-type').value='';fightsSortTouched=false;renderFightsTab();}
+function getFilteredFights(){return fights.filter(f=>{if(filtChamp&&f.champion!==filtChamp)return false;if(filtLane&&f.line!==filtLane)return false;if(filtType&&f.opponentMatchupType!==filtType)return false;return true;});}
+function renderFightsTab(){
+  const list=getFilteredFights();
+  if(!fightsSortTouched){currentSort='fightDate';sortDirection='asc';}
+  const sorts=[{id:'fightDate',label:'日期'},{id:'kills',label:'Kills'},{id:'damageDealt',label:'Damage'},{id:'goldEarned',label:'Gold'},{id:'ccDuration',label:'CC'}];
+  const arrow=sortDirection==='desc'?'↓':'↑';
+  document.getElementById('fights-sortbar').innerHTML='<span class="sort-label">Sort:</span>'+sorts.map(s=>`<button class="sort-btn ${currentSort===s.id?'active':''}" onclick="changeFightsSort('${s.id}')">${s.label}${currentSort===s.id?`<span class="sort-arrow">${arrow}</span>`:''}</button>`).join('');
+  const dir=sortDirection==='desc'?-1:1;
+  const t=f=>f.fightDate?new Date(f.fightDate).getTime():0;
+  list.sort((a,b)=>{if(currentSort==='fightDate')return dir*(t(b)-t(a));return dir*((b[currentSort]||0)-(a[currentSort]||0));});
+  renderSummary(list);
+  const box=document.getElementById('fights-list');
+  if(!list.length){box.innerHTML='<div class="no-fights">沒有符合條件的對戰</div>';return;}
+  box.innerHTML=list.map(f=>{
+    const ds=f.fightDate?new Date(f.fightDate).toLocaleString('zh-HK',{year:'numeric',month:'long',day:'numeric',weekday:'short',hour:'2-digit',minute:'2-digit'}):'N/A';
+    const mk=`${f.kills}/${f.deaths}/${f.assists}`,ok=`${f.opponentKills}/${f.opponentDeaths}/${f.opponentAssists}`;
+    const on=f.opponentChampion||'?';
+    const shots=f.screenshots||[];
+    const gc=f.grade&&f.grade.startsWith('S')?'#f0b429':'#58a6ff';
+    const li={Top:'⚔️',Jungle:'🌿',Mid:'✨',Dragon:'🐉',Baron:'👹',Support:'🛡️'};
+    const lic=li[f.line]||'📍';
+    const mb=[f.line?lic+' '+f.line:'','S'+f.season,f.opponentMatchupType].filter(Boolean).join(' · ');
+    return `<div class="fight-item"><div class="fight-date-banner"><span>${ds}</span></div><div class="fight-body"><div class="fight-left"><div class="fight-meta-row"><span class="fight-grade-badge" style="color:${gc}">${f.grade||'-'}</span><span class="fight-meta-spacer"></span><span class="fight-meta-text">${mb}</span></div><div class="fight-main"><div class="fight-side me">${getChampIconHtml(f.champion,'me')}<div><div class="fight-champ-name">${f.champion}</div><div class="fight-champ-kda">${mk}</div></div></div><div class="fight-vs-text">VS</div><div class="fight-side opp"><div><div class="fight-champ-name">${on}</div><div class="fight-champ-kda">${ok}</div></div>${getChampIconHtml(on,'opp')}</div></div><div class="fight-stats"><div class="fight-stat"><div class="lbl">Gold</div><div class="val">${f.goldEarned??'-'}</div></div><div class="fight-stat"><div class="lbl">Dmg</div><div class="val">${f.damageDealt??'-'}</div></div><div class="fight-stat"><div class="lbl">CC</div><div class="val">${f.ccDuration??0}s</div></div><div class="fight-stat"><div class="lbl">Ward</div><div class="val">${f.wards??0}</div></div><div class="fight-stat"><div class="lbl">Twr</div><div class="val">${f.towerDestroyed??0}</div></div><div class="fight-stat"><div class="lbl">Epic</div><div class="val">${f.epicMonster??0}</div></div><div class="fight-stat"><div class="lbl">TFP</div><div class="val">${f.teamFightPresence!=null?Math.round(f.teamFightPresence*100)+'%':'-'}</div></div></div></div><div class="fight-right">${shots.length?'<div class="fight-screenshots">'+shots.map(p=>`<img class="fight-shot" src="${p}" onclick="openLightbox('${p}')">`).join('')+'</div>':'<div style="color:#484f58;font-size:11px;text-align:center;">無截圖</div>'}${f.link?`<a class="fight-vid-link" href="${f.link}" target="_blank">▶ 影片</a>`:''}</div></div></div>`;
   }).join('');
-  
-  document.getElementById('modal-body').innerHTML = html;
-  
-  // 處理圖片加載失敗
-  document.querySelectorAll('.fight-champ-img').forEach(img => {
-    img.onerror = function() {
-      const champName = this.getAttribute('data-champ');
-      this.outerHTML = champName ? champName.charAt(0) : '?';
-    };
-  });
+  document.querySelectorAll('.fight-champ-img').forEach(img=>{img.onerror=function(){const n=this.getAttribute('data-champ');this.outerHTML=n?n.charAt(0):'?';};});
 }
-
-function changeSort(sortBy) {
-  if (currentSort === sortBy) {
-    sortDirection = sortDirection === 'desc' ? 'asc' : 'desc';
-  } else {
-    currentSort = sortBy;
-    sortDirection = 'desc';
-  }
-  const champFights = fights.filter(f => f.champion === currentChampion);
-  renderFightList(champFights);
+function renderSummary(list){
+  const el=document.getElementById('fights-summary');
+  if(!list.length){el.innerHTML='';return;}
+  const n=list.length;
+  const gr={};list.forEach(f=>{if(f.grade)gr[f.grade]=(gr[f.grade]||0)+1;});
+  const sc=gr['S']||0,ac=(gr['A']||0)+(gr['A+']||0)+(gr['A-']||0);
+  const avg=k=>{const v=list.map(f=>f[k]).filter(x=>x!=null&&x!==0);return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):'-';};
+  const cl=filtChamp||'全部英雄';
+  const pic=filtChamp?getChampionImage(filtChamp):getChampionImage('Tryndamere');
+  const cg={};fights.forEach(f=>{if(!f.champion)return;if(!cg[f.champion])cg[f.champion]=[];cg[f.champion].push(f);});
+  const ca=(arr,k)=>{const v=arr.map(f=>f[k]).filter(x=>x!=null&&x!==0);return v.length?v.reduce((a,b)=>a+b,0)/v.length:0;};
+  let gmG=1,gmD=1,gmC=1,gmW=1,gmT=1;
+  Object.values(cg).forEach(a=>{gmG=Math.max(gmG,ca(a,'goldEarned'));gmD=Math.max(gmD,ca(a,'damageDealt'));gmC=Math.max(gmC,ca(a,'ccDuration'));gmW=Math.max(gmW,ca(a,'wards'));gmT=Math.max(gmT,ca(a,'teamFightPresence')||0);});
+  const aG=avg('goldEarned'),aD=avg('damageDealt'),aK=avg('kills'),aDd=avg('deaths'),aA=avg('assists');
+  const bar=(l,v,p)=>`<div class="bar-row"><span class="bar-lbl">${l}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.min(p,100)}%"></div></div><span class="bar-val">${v}</span></div>`;
+  el.innerHTML=`<div class="sum-left">${pic?`<img class="sum-pic" src="${pic}" onerror="this.outerHTML='<div class=sum-pic style=display:flex;align-items:center;justify-content:center;font-size:28px>🎮</div>'">`:'<div class="sum-pic" style="display:flex;align-items:center;justify-content:center;font-size:28px;">🎮</div>'}<div><div class="sum-name">${cl}</div><div class="sum-sub">${n} 場對戰</div></div></div><div class="sum-badges"><div class="badge"><span class="big">${sc}</span><span class="small">S Rating</span></div><div class="badge a"><span class="big">${ac}</span><span class="small">A Rating</span></div><div class="badge"><span class="big">${aK}/${aDd}/${aA}</span><span class="small">Avg KDA</span></div></div><div class="sum-bars">${bar('Gold/場',aG,(aG/gmG)*100)}${bar('Damage/場',aD,(aD/gmD)*100)}${bar('CC',avg('ccDuration')+'s',(ca(list,'ccDuration')/gmC)*100)}${bar('Ward',avg('wards'),(ca(list,'wards')/gmW)*100)}${bar('TFP',avg('teamFightPresence')+'%',((ca(list,'teamFightPresence')||0)/gmT)*100)}</div>`;
 }
-
-function closeModal(event) {
-  if (!event || event.target.id === 'fight-modal') {
-    document.getElementById('fight-modal').classList.remove('active');
-  }
+function openLightbox(src){let lb=document.getElementById('lightbox');if(!lb){lb=document.createElement('div');lb.id='lightbox';lb.className='lightbox';lb.onclick=()=>lb.classList.remove('open');document.body.appendChild(lb);}lb.innerHTML=`<img src="${src}">`;lb.classList.add('open');}
+function changeFightsSort(s){fightsSortTouched=true;if(currentSort===s)sortDirection=sortDirection==='desc'?'asc':'desc';else{currentSort=s;sortDirection='desc';}renderFightsTab();}
+async function refreshData(fromTab){
+  document.querySelectorAll('.refresh-btn').forEach(b=>b.disabled=true);
+  const t=performance.now();
+  try{
+    const uw=localStorage.getItem('j07_worker')!=='off';
+    const [fr,cr]=await Promise.all([fetch((uw?WORKER+'/fights':'fights.json')+'?_='+Date.now()),fetch((uw?WORKER+'/champions':'champions.json')+'?_='+Date.now())]);
+    fights=await fr.json();champions=await cr.json();
+    if(uw)fights=fights.map(f=>({...f,screenshots:(f.screenshots||[]).map(s=>WORKER+'/shot?file_token='+s.file_token)}));
+    if(fromTab==='pool')initPoolPage();else if(fromTab==='fights'){initFightsTab();renderFightsTab();}
+    toast(`✓ 已更新（${fights.length} 場，${champions.length} 英雄 · ${uw?'飛書即時':'本地'} · ${Math.round(performance.now()-t)}ms）`);
+  }catch(e){toast('✗ 更新失敗：'+e.message,true);}finally{document.querySelectorAll('.refresh-btn').forEach(b=>b.disabled=false);}
 }
-
-// Battle Page
-const EXTRA_ROLES = {
-  'Aatrox': 'Top', 'Akali': 'Mid', 'Akshan': 'Mid', 'Alistar': 'Support',
-  'Ambessa': 'Top', 'Amumu': 'Jungle', 'Annie': 'Mid'
-};
-// 有 matchup 數據但未入 Champions 表嘅 Top 英雄（dropdown 補齊用）
-const EXTRA_TOP_LANE = [
-  'Camille','Fiora','Gnar','Gragas','Gwen','Irelia','Jayce','Kayle',
-  'Kennen',"K'Santé",'Malphite','Maokai','Nasus','Olaf','Renekton','Riven',
-  'Singed','Sion','Volibear','Vladimir','Warwick','Yasuo','Yone'
-];
-function hasExtraTop(name){
-  return EXTRA_TOP_LANE.includes(name) && !champions.some(c => c.name === name);
-}
-
-function champRole(c) {
-  return c.role || EXTRA_ROLES[c.name] || 'Top';
-}
-
-function initAssistantPage() {
-  const mySelect = document.getElementById('my-champion');
-  const oppSelect = document.getElementById('opponent-champion');
-  mySelect.innerHTML = '<option value="">先選 Lane...</option>';
-  oppSelect.innerHTML = '<option value="">先選 Lane...</option>';
-  document.getElementById('lane-select').value = '';
-}
-
-function onLaneChange() {
-  const lane = document.getElementById('lane-select').value;
-  const mySelect = document.getElementById('my-champion');
-  const oppSelect = document.getElementById('opponent-champion');
-  mySelect.innerHTML = '<option value="">選擇...' + (lane ? ' (' + lane + ')' : '') + '</option>';
-  oppSelect.innerHTML = '<option value="">選擇...' + (lane ? ' (' + lane + ')' : '') + '</option>';
-  if (!lane) {
-    checkMatchup();
-    return;
-  }
-  // 排序: S+ > S > A > B > Owned > Unowned
-  const poolOrder = {'S+': 0, 'S': 1, 'A': 2, 'B': 3, 'C': 4};
-  const laneChamps = champions.filter(c => champRole(c) === lane)
-    .concat(lane === 'Top' ? EXTRA_TOP_LANE.filter(hasExtraTop).map(name => ({ name, role: 'Top', myPool: '' })) : [])
-    .sort((a, b) => {
-      const aOrder = poolOrder[a.myPool] !== undefined ? poolOrder[a.myPool] : 5;
-      const bOrder = poolOrder[b.myPool] !== undefined ? poolOrder[b.myPool] : 5;
-      if (aOrder !== bOrder) return aOrder - bOrder;
-      return a.name.localeCompare(b.name);
-    });
-  laneChamps.forEach(c => {
-    mySelect.innerHTML += `<option value="${c.name}">${c.name} (${c.myPool || 'Owned'})</option>`;
-    oppSelect.innerHTML += `<option value="${c.name}">${c.name}</option>`;
-  });
+function toast(m,e){const el=document.createElement('div');el.className='refresh-toast'+(e?' err':'');el.textContent=m;document.body.appendChild(el);setTimeout(()=>el.remove(),2500);}
+const EXTRA={'Aatrox':'Top','Akali':'Mid','Akshan':'Mid','Alistar':'Support','Ambessa':'Top','Amumu':'Jungle','Annie':'Mid'};
+const ET=['Camille','Fiora','Gnar','Gragas','Gwen','Irelia','Jayce','Kayle','Kennen',"K'Santé",'Malphite','Maokai','Nasus','Olaf','Renekton','Riven','Singed','Sion','Volibear','Vladimir','Warwick','Yasuo','Yone'];
+function hasE(n){return ET.includes(n)&&!champions.some(c=>c.name===n);}
+function cr_(c){return c.role||EXTRA[c.name]||'Top';}
+function initAssistantPage(){document.getElementById('my-champion').innerHTML='<option value="">先選 Lane...</option>';document.getElementById('opponent-champion').innerHTML='<option value="">先選 Lane...</option>';document.getElementById('lane-select').value='';}
+function onLaneChange(){
+  const l=document.getElementById('lane-select').value;
+  const ms=document.getElementById('my-champion'),os=document.getElementById('opponent-champion');
+  ms.innerHTML='<option value="">選擇...'+(l?' ('+l+')':'')+'</option>';os.innerHTML='<option value="">選擇...'+(l?' ('+l+')':'')+'</option>';
+  if(!l){checkMatchup();return;}
+  const po={'S+':0,S:1,A:2,B:3,C:4};
+  const lc=champions.filter(c=>cr_(c)===l).concat(l==='Top'?ET.filter(hasE).map(n=>({name:n,role:'Top',myPool:''})):[]).sort((a,b)=>{const ao=po[a.myPool]!=null?po[a.myPool]:5;const bo=po[b.myPool]!=null?po[b.myPool]:5;if(ao!==bo)return ao-bo;return a.name.localeCompare(b.name);});
+  lc.forEach(c=>{ms.innerHTML+=`<option value="${c.name}">${c.name} (${c.myPool||'Owned'})</option>`;os.innerHTML+=`<option value="${c.name}">${c.name}</option>`;});
   checkMatchup();
 }
-
-function getMatchupGuide(type, edge, lane) {
-  const isAdvantage = edge > 0;
-  const guides = {
-    'Hard Counter': {
-      summary: isAdvantage ? '你係強勢Counter，前期可以主動進攻壓制對手' : '對手係強勢Counter，前期需要盡量龜塔發育，避免正面衝突',
-      howto: isAdvantage ? '前期主動換血，控制兵線，利用等級優勢滾雪球。6級後可以考慮單殺或呼叫打野越塔。' : '前期以發育為主，用技能清兵，保持距離。呼叫打野幫忙gank，後期團戰先發制人。',
-      lane: isAdvantage ? '推線入塔，限制對手發育，控制河道視野，搶先支援其他路。' : '龜塔發育，呼叫打野保護，避免在河道打架，等團戰再發揮。',
-      why: isAdvantage ? '你的技能機制克制對手，前期傷害和換血能力佔優。' : '對手技能機制克制你，前期正面交鋒會吃虧。'
-    },
-    'Soft Counter': {
-      summary: isAdvantage ? '你有少許優勢，可以適當進攻但唔好太進取' : '對手有少許優勢，需要小心應對，避免被滾雪球',
-      howto: isAdvantage ? '穩定換血，控制兵線，尋找機會擊殺。保持視野，防止對方打野gank。' : '穩定發育，避免被換血，呼叫打野反gank。後期團戰找好輸出位置。',
-      lane: isAdvantage ? '適當推線，控制視野，適時支援其他路。' : '穩定補刀，保持視野，等打野幫忙。',
-      why: isAdvantage ? '你的技能範圍或傷害略佔優，但對手都有反制手段。' : '對手技能略佔優，但你都有機會反打。'
-    },
-    'Even': {
-      summary: '實力相當，取決於操作和打野幫忙',
-      howto: '專注補刀和換血技巧，保持視野。尋找對手失誤，適時呼叫打野。團戰發揮自己嘅角色作用。',
-      lane: '穩定發育，控制兵線，適時支援。保持河道視野，防止被gank。',
-      why: '雙方技能機制均衡，邊個操作好、視野好就贏。'
-    },
-    'Farm': {
-      summary: '發育型對局，邊個發育好邊個贏',
-      howto: '專注補刀，盡量避免打架。控制兵線，快速推線後支援其他路或刷野。',
-      lane: '快速推線，然後支援其他路或刷野怪。保持視野，防止被gank。',
-      why: '雙方都冇明顯克制，後期英雄需要發育時間。'
-    }
-  };
-  return guides[type] || guides['Even'];
+function checkMatchup(){
+  const mc=document.getElementById('my-champion').value,oc=document.getElementById('opponent-champion').value;
+  const r=document.getElementById('matchup-result');
+  if(!mc||!oc){r.innerHTML='';return;}
+  let mu=matchups.find(m=>m.championA===mc&&m.championB===oc)||matchups.find(m=>m.championA===oc&&m.championB===mc);
+  const vs=fights.filter(f=>f.champion===mc&&f.opponentChampion===oc).sort((a,b)=>new Date(b.fightDate||0)-new Date(a.fightDate||0));
+  const all=fights.filter(f=>f.champion===mc).sort((a,b)=>new Date(b.fightDate||0)-new Date(a.fightDate||0));
+  let tc='even',tt='Even',edge=0,lane='N/A',hasM=false;
+  if(mu){hasM=true;const rev=mu.championA===oc;edge=rev?-mu.edge:mu.edge;tt=mu.matchupType||'Even';lane=mu.lane||'N/A';
+    if(tt.includes('Favorable')||tt.includes('Hard Counter'))tc=edge>0?'farm':'hard-counter';
+    else if(tt.includes('Unfavorable')||tt.includes('Soft Counter'))tc=edge>0?'farm':'soft-counter';
+    else if(tt.includes('Skill')||tt.includes('Even'))tc='even';else if(tt.includes('Farm'))tc='farm';}
+  const vsS=vs.filter(f=>f.grade&&['S+','S'].includes(f.grade)).length,vsA=vs.filter(f=>f.grade&&['A+','A'].includes(f.grade)).length;
+  const allS=all.filter(f=>f.grade&&['S+','S'].includes(f.grade)).length,allA=all.filter(f=>f.grade&&['A+','A'].includes(f.grade)).length;
+  const mi=getChampionImage(mc),oi=getChampionImage(oc);
+  r.innerHTML=`<div class="matchup-result"><div class="matchup-vs"><div class="matchup-champ"><div class="matchup-champ-icon me">${mi?`<img src="${mi}" alt="${mc}">`:mc.charAt(0)}</div><div class="matchup-champ-name">${mc}</div></div><div class="matchup-vs-text">VS</div><div class="matchup-champ"><div class="matchup-champ-icon opp">${oi?`<img src="${oi}" alt="${oc}">`:oc.charAt(0)}</div><div class="matchup-champ-name">${oc}</div></div></div><div class="matchup-type ${tc}">${tt}</div><div class="matchup-edge">Lane: ${lane}</div>${hasM?`<div class="matchup-guide"><div class="matchup-guide-title">📖 Matchup Guide</div>${mu.summary?`<div class="matchup-guide-item summary"><div class="matchup-guide-label">Summary</div><div class="matchup-guide-text">${mu.summary}</div></div>`:''}${mu.howToPlay?`<div class="matchup-guide-item howto"><div class="matchup-guide-label">How to Play</div><div class="matchup-guide-text">${mu.howToPlay}</div></div>`:''}${mu.laneImpact?`<div class="matchup-guide-item lane"><div class="matchup-guide-label">Lane Impact</div><div class="matchup-guide-text">${mu.laneImpact}</div></div>`:''}${mu.why?`<div class="matchup-guide-item why"><div class="matchup-guide-label">Why</div><div class="matchup-guide-text">${mu.why}</div></div>`:''}</div>`:'<div class="no-matchup"><div class="no-matchup-text">⚠️ 暫無呢個 Matchup 數據</div></div>'}<div class="personal-records"><div class="records-side me"><div class="records-side-title">📊 對 ${oc} 戰績</div><div class="records-stats"><div class="records-stat"><div class="records-stat-value">${vs.length}</div><div class="records-stat-label">場數</div></div><div class="records-stat"><div class="records-stat-value win">${vsS}</div><div class="records-stat-label">S</div></div><div class="records-stat"><div class="records-stat-value loss">${vsA}</div><div class="records-stat-label">A</div></div></div>${vs.length?vs.slice(0,2).map(f=>`<div class="record-mini"><span class="record-mini-grade">${f.grade||'N/A'}</span><span>${f.kills}/${f.deaths}/${f.assists}</span><span>S${f.season||'?'}</span></div>`).join(''):'<div class="record-mini"><span>暫無對呢個對手記錄</span></div>'}</div><div class="records-side opp"><div class="records-side-title">📈 ${mc} 最新戰績</div><div class="records-stats"><div class="records-stat"><div class="records-stat-value">${all.length}</div><div class="records-stat-label">總場</div></div><div class="records-stat"><div class="records-stat-value win">${allS}</div><div class="records-stat-label">S</div></div><div class="records-stat"><div class="records-stat-value loss">${allA}</div><div class="records-stat-label">A</div></div></div>${all.slice(0,5).map(f=>`<div class="record-mini"><span class="record-mini-grade">${f.grade||'N/A'}</span><span>${f.kills}/${f.deaths}/${f.assists}</span><span class="record-mini-opp">${f.opponentChampion||'?'}</span></div>`).join('')}</div></div></div>`;
 }
-
-function checkMatchup() {
-  const myChamp = document.getElementById('my-champion').value;
-  const oppChamp = document.getElementById('opponent-champion').value;
-  const resultDiv = document.getElementById('matchup-result');
-  
-  if (!myChamp || !oppChamp) {
-    resultDiv.innerHTML = '';
-    return;
-  }
-  
-  // 優先選擇championA=我嘅記錄，唔係就用反向
-  let matchup = matchups.find(m => m.championA === myChamp && m.championB === oppChamp);
-  if (!matchup) {
-    matchup = matchups.find(m => m.championA === oppChamp && m.championB === myChamp);
-  }
-  
-  // 我用呢個Champion對呢個對手嘅戰績（按日期降序）
-  const vsOpponentFights = fights.filter(f => f.champion === myChamp && f.opponentChampion === oppChamp)
-    .sort((a, b) => new Date(b.fightDate || 0) - new Date(a.fightDate || 0));
-  // 我用呢個Champion嘅全部戰績（按日期降序）
-  const allChampFights = fights.filter(f => f.champion === myChamp)
-    .sort((a, b) => new Date(b.fightDate || 0) - new Date(a.fightDate || 0));
-  
-  let typeClass = 'even';
-  let typeText = 'Even';
-  let edge = 0;
-  let lane = 'N/A';
-  let hasMatchup = false;
-  if (matchup) {
-    hasMatchup = true;
-    const isReverse = matchup.championA === oppChamp;
-    edge = isReverse ? -matchup.edge : matchup.edge;
-    typeText = matchup.matchupType || 'Even';
-    lane = matchup.lane || 'N/A';
-    
-    if (typeText.includes('Favorable') || typeText.includes('Hard Counter')) typeClass = edge > 0 ? 'farm' : 'hard-counter';
-    else if (typeText.includes('Unfavorable') || typeText.includes('Soft Counter')) typeClass = edge > 0 ? 'farm' : 'soft-counter';
-    else if (typeText.includes('Skill') || typeText.includes('Even')) typeClass = 'even';
-    else if (typeText.includes('Farm')) typeClass = 'farm';
-  }
-  
-  const guide = getMatchupGuide(typeText, edge, lane);
-  
-  const vsS = vsOpponentFights.filter(f => f.grade && ['S+', 'S'].includes(f.grade)).length;
-  const vsA = vsOpponentFights.filter(f => f.grade && ['A+', 'A'].includes(f.grade)).length;
-  const allS = allChampFights.filter(f => f.grade && ['S+', 'S'].includes(f.grade)).length;
-  const allA = allChampFights.filter(f => f.grade && ['A+', 'A'].includes(f.grade)).length;
-  
-  const myImg = getChampionImage(myChamp);
-  const oppImg = getChampionImage(oppChamp);
-  
-  resultDiv.innerHTML = `
-    <div class="matchup-result">
-      <div class="matchup-vs">
-        <div class="matchup-champ">
-          <div class="matchup-champ-icon me">${myImg ? `<img src="${myImg}" alt="${myChamp}">` : myChamp.charAt(0)}</div>
-          <div class="matchup-champ-name">${myChamp}</div>
-        </div>
-        <div class="matchup-vs-text">VS</div>
-        <div class="matchup-champ">
-          <div class="matchup-champ-icon opp">${oppImg ? `<img src="${oppImg}" alt="${oppChamp}">` : oppChamp.charAt(0)}</div>
-          <div class="matchup-champ-name">${oppChamp}</div>
-        </div>
-      </div>
-      <div class="matchup-type ${typeClass}">${typeText}</div>
-      <div class="matchup-edge">Lane: ${lane}</div>
-      
-      ${hasMatchup ? `<div class="matchup-guide">
-        <div class="matchup-guide-title">📖 Matchup Guide</div>
-        ${matchup.summary ? `<div class="matchup-guide-item summary">
-          <div class="matchup-guide-label">Summary</div>
-          <div class="matchup-guide-text">${matchup.summary}</div>
-        </div>` : ''}
-        ${matchup.howToPlay ? `<div class="matchup-guide-item howto">
-          <div class="matchup-guide-label">How to Play</div>
-          <div class="matchup-guide-text">${matchup.howToPlay}</div>
-        </div>` : ''}
-        ${matchup.laneImpact ? `<div class="matchup-guide-item lane">
-          <div class="matchup-guide-label">Lane Impact</div>
-          <div class="matchup-guide-text">${matchup.laneImpact}</div>
-        </div>` : ''}
-        ${matchup.why ? `<div class="matchup-guide-item why">
-          <div class="matchup-guide-label">Why</div>
-          <div class="matchup-guide-text">${matchup.why}</div>
-        </div>` : ''}
-        ${matchup.source ? `<div class="matchup-source">
-          <a href="${matchup.source}" target="_blank">📖 來源: wildriftcore.com</a>
-        </div>` : ''}
-        ${!matchup.summary && !matchup.howToPlay ? '<div class="no-matchup-text">暫無詳細Guide數據</div>' : ''}
-      </div>` : `<div class="no-matchup">
-        <div class="no-matchup-text">⚠️ 暫無呢個 Matchup 數據</div>
-      </div>`}
-      
-      <div class="personal-records">
-        <div class="records-side me">
-          <div class="records-side-title">📊 對 ${oppChamp} 戰績</div>
-          <div class="records-stats">
-            <div class="records-stat">
-              <div class="records-stat-value">${vsOpponentFights.length}</div>
-              <div class="records-stat-label">場數</div>
-            </div>
-            <div class="records-stat">
-              <div class="records-stat-value win">${vsS}</div>
-              <div class="records-stat-label">S</div>
-            </div>
-            <div class="records-stat">
-              <div class="records-stat-value loss">${vsA}</div>
-              <div class="records-stat-label">A</div>
-            </div>
-          </div>
-          ${vsOpponentFights.length > 0 ? vsOpponentFights.slice(0, 2).map(f => `
-            <div class="record-mini">
-              <span class="record-mini-grade">${f.grade || 'N/A'}</span>
-              <span>${f.kills}/${f.deaths}/${f.assists}</span>
-              <span>S${f.season || '?'}</span>
-            </div>
-          `).join('') : '<div class="record-mini"><span>暫無對呢個對手記錄</span></div>'}
-        </div>
-        <div class="records-side opp">
-          <div class="records-side-title">📈 ${myChamp} 最新戰績</div>
-          <div class="records-stats">
-            <div class="records-stat">
-              <div class="records-stat-value">${allChampFights.length}</div>
-              <div class="records-stat-label">總場</div>
-            </div>
-            <div class="records-stat">
-              <div class="records-stat-value win">${allS}</div>
-              <div class="records-stat-label">S</div>
-            </div>
-            <div class="records-stat">
-              <div class="records-stat-value loss">${allA}</div>
-              <div class="records-stat-label">A</div>
-            </div>
-          </div>
-          ${allChampFights.slice(0, 5).map(f => `
-            <div class="record-mini">
-              <span class="record-mini-grade">${f.grade || 'N/A'}</span>
-              <span>${f.kills}/${f.deaths}/${f.assists}</span>
-              <span class="record-mini-opp">${f.opponentChampion || '?'}</span>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </div>
-  `;
+function switchTab(t,el){document.querySelectorAll('.bottom-tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));el.classList.add('active');document.getElementById('page-'+t).classList.add('active');if(t==='news')loadNews();if(t==='fights')renderFightsTab();}
+let newsCache={official:[],youtube:[]},newsFilter='all',newsLoaded=false;
+async function loadNews(){if(newsLoaded){renderNews();return;}const l=document.getElementById('news-list');try{const r=await fetch('news-cache.json?t='+Date.now(),{cache:'no-store'});newsCache=await r.json();newsLoaded=true;}catch(e){newsCache={official:[],youtube:[],error:'無法載入新聞鏡像'};}renderNews();}
+function filterNews(t,el){newsFilter=t;document.querySelectorAll('#news-filters .filter-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');renderNews();}
+function renderNews(){
+  const l=document.getElementById('news-list');if(!l)return;
+  if(newsCache.error){l.innerHTML='<div class="news-empty">⚠️ '+newsCache.error+'</div>';return;}
+  const items=[];
+  (newsCache.official||[]).forEach(n=>items.push({kind:'official',title:n.title||'',url:n.url||'#',date:String(n.published||'').slice(0,10),image:n.image||'',category:n.category||'官方'}));
+  (newsCache.youtube||[]).forEach(v=>items.push({kind:'youtube',title:v.title||'',url:v.url||'#',date:String(v.published||'').slice(0,10),image:v.thumbnail||'',category:'影片'}));
+  const f=newsFilter==='all'?items:items.filter(i=>i.kind===newsFilter);
+  f.sort((a,b)=>(b.date||'').localeCompare(a.date||''));
+  if(!f.length){l.innerHTML='<div class="news-empty">暫時冇新聞</div>';return;}
+  l.innerHTML=f.map(i=>`<a class="news-card" href="${i.url}" target="_blank"><div class="news-thumb"${i.image?` style="background-image:url('${i.image}')"`:''}>${i.kind==='youtube'?'▶️':'📰'}</div><div class="news-body"><div class="news-meta"><span class="news-badge ${i.kind}">${i.kind==='youtube'?'▶ '+i.category:i.category}</span><span class="news-date">${i.date}</span></div><div class="news-title">${i.title}</div></div></a>`).join('');
 }
-
-function switchTab(tab, el) {
-  document.querySelectorAll('.bottom-tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('page-' + tab).classList.add('active');
-  if (tab === 'news') loadNews();
-}
-
-// ===== News 圖庫（官方 news + YouTube playlist 統一鏡像 news-cache.json）=====
-let newsCache = { official: [], youtube: [] };
-let newsFilter = 'all';
-let newsLoaded = false;
-
-async function loadNews() {
-  if (newsLoaded) { renderNews(); return; }
-  const list = document.getElementById('news-list');
-  try {
-    const res = await fetch('news-cache.json?t=' + Date.now(), { cache: 'no-store' });
-    newsCache = await res.json();
-    newsLoaded = true;
-  } catch (e) {
-    newsCache = { official: [], youtube: [], error: '無法載入新聞鏡像' };
-  }
-  renderNews();
-}
-
-function filterNews(type, el) {
-  newsFilter = type;
-  document.querySelectorAll('#news-filters .filter-btn').forEach(b => b.classList.remove('active'));
-  el.classList.add('active');
-  renderNews();
-}
-
-function renderNews() {
-  const list = document.getElementById('news-list');
-  if (!list) return;
-  if (newsCache.error) {
-    list.innerHTML = '<div class="news-empty">⚠️ ' + newsCache.error + '<br>請稍後再試</div>';
-    return;
-  }
-  const items = [];
-  (newsCache.official || []).forEach(n => {
-    items.push({ kind: 'official', title: n.title || '', url: n.url || '#', date: String(n.published || '').slice(0, 10), image: n.image || '', category: n.category || '官方' });
-  });
-  (newsCache.youtube || []).forEach(v => {
-    items.push({ kind: 'youtube', title: v.title || '', url: v.url || '#', date: String(v.published || '').slice(0, 10), image: v.thumbnail || '', category: '影片' });
-  });
-  const filtered = newsFilter === 'all' ? items : items.filter(i => i.kind === newsFilter);
-  filtered.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
-  if (!filtered.length) {
-    list.innerHTML = '<div class="news-empty">暫時冇新聞</div>';
-    return;
-  }
-  list.innerHTML = filtered.map(i => `
-    <a class="news-card" href="${i.url}" target="_blank" rel="noopener">
-      <div class="news-thumb"${i.image ? ' style="background-image:url(\'' + i.image + '\')"' : ''}>${i.kind === 'youtube' ? '▶️' : '📰'}</div>
-      <div class="news-body">
-        <div class="news-meta">
-          <span class="news-badge ${i.kind}">${i.kind === 'youtube' ? '▶ ' + i.category : i.category}</span>
-          <span class="news-date">${i.date}</span>
-        </div>
-        <div class="news-title">${i.title}</div>
-      </div>
-    </a>`).join('');
-}
-
-loadData();
-loadNews();
+loadData();loadNews();
 </script>
 </body>
 </html>
