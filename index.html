@@ -75,7 +75,8 @@ body {
 .news-badge.youtube { background: rgba(255, 69, 58, 0.18); color: #ff6b6b; }
 .news-date { margin-left: auto; }
 .news-title { font-size: 14px; font-weight: 600; line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.news-empty, .news-loading { text-align: center; padding: 40px; color: #8b949e; }
+.news-empty { text-align: center; padding: 40px; color: #8b949e; }
+.news-loading { text-align: center; padding: 40px; color: #8b949e; }
 .filters { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
 .pool-group { margin-bottom: 24px; }
 .pool-title { font-size: 16px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
@@ -223,46 +224,147 @@ body {
 .sort-btn { padding: 4px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid #30363d; background: #21262d; color: #8b949e; transition: all 0.2s; }
 .sort-btn.active { background: #1f6feb; color: white; border-color: #1f6feb; }
 .sort-arrow { font-size: 10px; margin-left: 2px; }
+/* Leaderboard */
+.view-toggle { display: flex; gap: 6px; margin-bottom: 14px; }
+.view-toggle-btn { padding: 6px 14px; border-radius: 8px; font-size: 13px; cursor: pointer; border: 1px solid #30363d; background: transparent; color: #8b949e; }
+.view-toggle-btn.active { background: linear-gradient(90deg, #58a6ff, #bc8cff); color: #000; font-weight: 700; border-color: transparent; }
+.sub-toggle { display: flex; gap: 6px; margin-bottom: 14px; margin-left: 8px; }
+.sub-toggle-btn { padding: 4px 12px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid #30363d; background: #161b22; color: #8b949e; }
+.sub-toggle-btn.active { background: #1f6feb; color: #fff; border-color: #1f6feb; }
+.lb-lane-group { margin-bottom: 24px; }
+.lb-lane-title { font-size: 15px; font-weight: 700; margin-bottom: 10px; padding: 6px 12px; background: #161b22; border-radius: 8px; border-left: 3px solid #58a6ff; }
+.lb-row { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: #161b22; border: 1px solid #30363d; border-radius: 8px; margin-bottom: 6px; cursor: pointer; transition: all 0.15s; }
+.lb-row:hover { border-color: #58a6ff; }
+.lb-rank { width: 28px; text-align: center; font-size: 16px; font-weight: 800; color: #6e7681; flex-shrink: 0; }
+.lb-rank.top1 { color: #f0b429; }
+.lb-rank.top2 { color: #c0c0c0; }
+.lb-rank.top3 { color: #cd7f32; }
+.lb-icon { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; background: #30363d; display: flex; align-items: center; justify-content: center; overflow: hidden; font-size: 14px; font-weight: 700; color: #58a6ff; }
+.lb-icon img { width: 100%; height: 100%; object-fit: cover; }
+.lb-name { flex: 1; font-size: 14px; font-weight: 600; min-width: 0; }
+.lb-stats { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
+.lb-stat { text-align: center; font-size: 11px; color: #8b949e; }
+.lb-stat-val { font-size: 14px; font-weight: 700; }
+.lb-stat-val.s { color: #f0b429; }
+.lb-stat-val.a { color: #58a6ff; }
+.lb-stat-val.k { color: #3fb950; }
+.lb-score { font-size: 16px; font-weight: 800; color: #bc8cff; min-width: 40px; text-align: right; flex-shrink: 0; }
+.lb-empty { text-align: center; padding: 30px; color: #6e7681; }
 </style>
 </head>
 <body>
-<div class="header"><img src="logo.jpg" alt="HIS Tools" style="width:34px;height:34px;border-radius:8px;object-fit:contain;flex-shrink:0"><h1>Wild Rift Tools</h1></div>
+<div class="header">
+  <img src="logo.jpg" alt="HIS Tools" style="width:34px;height:34px;border-radius:8px;object-fit:contain;flex-shrink:0">
+  <h1>Wild Rift Tools</h1>
+</div>
 <div class="content">
-  <div id="page-assistant" class="page active"><div class="assistant-container"><div class="lane-row"><div class="selector-label">🛣️ 我嘅 Lane</div><select class="champion-select" id="lane-select" onchange="onLaneChange()"><option value="">選擇 Lane...</option><option value="Top">Top</option><option value="Jungle">Jungle</option><option value="Mid">Mid</option><option value="Dragon">Dragon</option><option value="Support">Support</option></select></div><div class="selector-row"><div class="selector-group"><div class="selector-label">⚔️ This Battle</div><select class="champion-select" id="my-champion" onchange="checkMatchup()"><option value="">先選 Lane...</option></select></div><div class="selector-vs">VS</div><div class="selector-group"><div class="selector-label">💀 Enemy</div><select class="champion-select" id="opponent-champion" onchange="checkMatchup()"><option value="">先選 Lane...</option></select></div></div><div id="matchup-result"></div></div></div>
-  <div id="page-pool" class="page"><div class="pool-header"><div class="filters" id="pool-filters"></div><button class="refresh-btn" onclick="refreshData('pool')" title="從雲端更新">↻ Refresh</button></div><div id="champion-container"></div></div>
-  <div id="page-fights" class="page"><div id="fights-summary"></div><div class="fights-toolbar"><select id="filt-champ" class="filt-select" onchange="onFiltChange()"><option value="">全部英雄</option></select><select id="filt-lane" class="filt-select" onchange="onFiltChange()"><option value="">全部Lane</option><option>Top</option><option>Jungle</option><option>Mid</option><option>Dragon</option><option>Support</option></select><select id="filt-type" class="filt-select" onchange="onFiltChange()"><option value="">全部類型</option></select><button class="refresh-btn" onclick="resetFilt()" style="background:#6e7681;" title="重置">↺ Reset</button><button class="refresh-btn" onclick="refreshData('fights')" title="從雲端更新">↻ Refresh</button></div><div class="sort-bar" id="fights-sortbar"></div><div id="fights-list"></div></div>
-  <div id="page-news" class="page"><div class="filter-bar" id="news-filters"><button class="filter-btn active" onclick="filterNews('all', this)">🔥 全部</button><button class="filter-btn" onclick="filterNews('official', this)">📢 官方</button><button class="filter-btn" onclick="filterNews('youtube', this)">▶ YouTube</button></div><div id="news-list" class="news-list"><div class="news-loading">📰 載入新聞中...</div></div></div>
+  <div id="page-assistant" class="page active">
+    <div class="assistant-container">
+      <div class="lane-row">
+        <div class="selector-label">🛣️ 我嘅 Lane</div>
+        <select class="champion-select" id="lane-select" onchange="onLaneChange()">
+          <option value="">選擇 Lane...</option>
+          <option value="Top">Top</option>
+          <option value="Jungle">Jungle</option>
+          <option value="Mid">Mid</option>
+          <option value="Dragon">Dragon</option>
+          <option value="Support">Support</option>
+        </select>
+      </div>
+      <div class="selector-row">
+        <div class="selector-group">
+          <div class="selector-label">⚔️ This Battle</div>
+          <select class="champion-select" id="my-champion" onchange="checkMatchup()"><option value="">先選 Lane...</option></select>
+        </div>
+        <div class="selector-vs">VS</div>
+        <div class="selector-group">
+          <div class="selector-label">💀 Enemy</div>
+          <select class="champion-select" id="opponent-champion" onchange="checkMatchup()"><option value="">先選 Lane...</option></select>
+        </div>
+      </div>
+      <div id="matchup-result"></div>
+    </div>
+  </div>
+  <div id="page-pool" class="page">
+    <div class="view-toggle">
+      <button class="view-toggle-btn active" id="vt-gallery" onclick="switchPoolView('gallery')">🖼️ 英雄圖庫</button>
+      <button class="view-toggle-btn" id="vt-leaderboard" onclick="switchPoolView('leaderboard')">🏆 積分榜</button>
+    </div>
+    <div id="lb-sub-toggle" class="sub-toggle" style="display:none;">
+      <button class="sub-toggle-btn active" id="lb-by-lane" onclick="switchLbLayout('by-lane')">📊 分Lane排名</button>
+      <button class="sub-toggle-btn" id="lb-all" onclick="switchLbLayout('all')">📋 全部合一</button>
+    </div>
+    <div class="pool-header" id="pool-gallery-header">
+      <div class="filters" id="pool-filters"></div>
+      <button class="refresh-btn" onclick="refreshData('pool')" title="從雲端更新">↻ Refresh</button>
+    </div>
+    <div id="champion-container"></div>
+    <div id="leaderboard-container" style="display:none;"></div>
+  </div>
+  <div id="page-fights" class="page">
+    <div id="fights-summary"></div>
+    <div class="fights-toolbar">
+      <select id="filt-champ" class="filt-select" onchange="onFiltChange()"><option value="">全部英雄</option></select>
+      <select id="filt-lane" class="filt-select" onchange="onFiltChange()">
+        <option value="">全部Lane</option>
+        <option>Baron</option><option>Jungle</option><option>Mid</option><option>Dragon</option><option>Support</option>
+      </select>
+      <select id="filt-type" class="filt-select" onchange="onFiltChange()"><option value="">全部類型</option></select>
+      <button class="refresh-btn" onclick="resetFilt()" style="background:#6e7681;" title="重置">↺ Reset</button>
+      <button class="refresh-btn" onclick="refreshData('fights')" title="從雲端更新">↻ Refresh</button>
+    </div>
+    <div class="sort-bar" id="fights-sortbar"></div>
+    <div id="fights-list"></div>
+  </div>
+  <div id="page-news" class="page">
+    <div class="filter-bar" id="news-filters">
+      <button class="filter-btn active" onclick="filterNews('all', this)">🔥 全部</button>
+      <button class="filter-btn" onclick="filterNews('official', this)">📢 官方</button>
+      <button class="filter-btn" onclick="filterNews('youtube', this)">▶ YouTube</button>
+    </div>
+    <div id="news-list" class="news-list"><div class="news-loading">📰 載入新聞中...</div></div>
+  </div>
 </div>
 <div class="modal-overlay" id="fight-modal" onclick="closeModal(event)"><div class="modal" onclick="event.stopPropagation()"><div class="modal-header"><div class="modal-title" id="modal-title">Fight Records</div><button class="modal-close" onclick="closeModal()">&times;</button></div><div class="modal-body" id="modal-body"></div></div></div>
-<div class="footer">Wild Rift Tools © 2026.1.04</div>
-<div class="bottom-tabs"><button class="bottom-tab active" onclick="switchTab('assistant', this)"><span class="tab-icon">⚔️</span><span>Battle</span></button><button class="bottom-tab" onclick="switchTab('pool', this)"><span class="tab-icon">🏆</span><span>Champions</span></button><button class="bottom-tab" onclick="switchTab('fights', this)"><span class="tab-icon">🎯</span><span>Fights</span></button><button class="bottom-tab" onclick="switchTab('news', this)"><span class="tab-icon">📰</span><span>News</span></button></div>
+<div class="footer">Wild Rift Tools © 2026.1.05</div>
+<div class="bottom-tabs">
+  <button class="bottom-tab active" onclick="switchTab('assistant', this)"><span class="tab-icon">⚔️</span><span>Battle</span></button>
+  <button class="bottom-tab" onclick="switchTab('pool', this)"><span class="tab-icon">🏆</span><span>Champions</span></button>
+  <button class="bottom-tab" onclick="switchTab('fights', this)"><span class="tab-icon">🎯</span><span>Fights</span></button>
+  <button class="bottom-tab" onclick="switchTab('news', this)"><span class="tab-icon">📰</span><span>News</span></button>
+</div>
 <script>
 let champions=[],fights=[],matchups=[],screenshots=[];
 let currentPoolFilter='all',currentSort='fightDate',sortDirection='desc',currentChampion='';
 let filtChamp='',filtLane='',filtType='',fightsSortTouched=false;
+let poolView='gallery',lbLayout='by-lane';
 const WORKER='https://j07-wr-proxy.hkharrycheng.workers.dev';
 async function loadData(){
   document.getElementById('champion-container').innerHTML='<div class="loading">⚔️ 載入英雄數據中...</div>';
   try{
     const useWorker=localStorage.getItem('j07_worker')!=='off';
-    const [fr,cr,mr]=await Promise.all([fetch(useWorker?WORKER+'/fights':'fights.json'),fetch(useWorker?WORKER+'/champions':'champions.json'),fetch('matchups.json')]);
-    fights=await fr.json();let wc=await cr.json();matchups=await mr.json();
-    if(!wc||!wc.length){champions=await(await fetch('champions.json')).json();}else{champions=wc;}
+    const fightsUrl=useWorker?WORKER+'/fights':'fights.json';
+    const champUrl=useWorker?WORKER+'/champions':'champions.json';
+    const [fightRes,champRes,matchupRes]=await Promise.all([fetch(fightsUrl),fetch(champUrl),fetch('matchups.json')]);
+    fights=await fightRes.json();
+    let workerChamps=await champRes.json();
+    matchups=await matchupRes.json();
+    if(!workerChamps||!workerChamps.length){champions=await(await fetch('champions.json')).json();}else{champions=workerChamps;}
     if(useWorker){fights=fights.map(f=>({...f,screenshots:(f.screenshots||[]).map(s=>WORKER+'/shot?file_token='+s.file_token)}));}
     initPoolPage();initAssistantPage();initFightsTab();
   }catch(err){
-    try{const [cr,fr,mr]=await Promise.all([fetch('champions.json'),fetch('fights.json'),fetch('matchups.json')]);champions=await cr.json();fights=await fr.json();matchups=await mr.json();initPoolPage();initAssistantPage();initFightsTab();}
+    try{const [champRes,fightRes,matchupRes]=await Promise.all([fetch('champions.json'),fetch('fights.json'),fetch('matchups.json')]);champions=await champRes.json();fights=await fightRes.json();matchups=await matchupRes.json();initPoolPage();initAssistantPage();initFightsTab();}
     catch(e2){document.getElementById('champion-container').innerHTML='<div class="loading">載入失敗: '+e2.message+'</div>';}
   }
 }
 function getChampionImage(n){return n?`champion-images/${n}.webp`:'';}
 function getChampIconHtml(n,side=''){
-  if(!n||n==='Unknown') return `<div class="fight-champ-icon ${side}">❓</div>`;
+  if(!n||n==='Unknown')return `<div class="fight-champ-icon ${side}">❓</div>`;
   const img=getChampionImage(n),initial=n?n.charAt(0):'?';
-  if(img) return `<div class="fight-champ-icon ${side}"><img src="${img}" alt="${n}" data-champ="${n}" class="fight-champ-img" onerror="this.outerHTML='<div class=fight-champ-icon ${side}>${initial}</div>'"></div>`;
+  if(img)return `<div class="fight-champ-icon ${side}"><img src="${img}" alt="${n}" data-champ="${n}" class="fight-champ-img" onerror="this.outerHTML='<div class=fight-champ-icon ${side}>${initial}</div>'"></div>`;
   return `<div class="fight-champ-icon ${side}">${initial}</div>`;
 }
-function initPoolPage(){const pools=[...new Set(champions.map(c=>c.myPool).filter(p=>p))];const order=['S+','S','A','B','C'];const sp=order.filter(p=>pools.includes(p)).concat(pools.filter(p=>!order.includes(p)));document.getElementById('pool-filters').innerHTML='<button class="filter-btn active" onclick="filterPool(\'all\')">全部</button>'+sp.map(p=>`<button class="filter-btn" onclick="filterPool('${p}')">${p}</button>`).join('');renderChampions();}
+function initPoolPage(){const pools=[...new Set(champions.map(c=>c.myPool).filter(p=>p))];const order=['S+','S','A','B','C'];const sp=order.filter(p=>pools.includes(p)).concat(pools.filter(p=>!order.includes(p)));document.getElementById('pool-filters').innerHTML='<button class="filter-btn active" onclick="filterPool(\'all\')">全部</button>'+sp.map(p=>`<button class="filter-btn" onclick="filterPool(\'${p}\')">${p}</button>`).join('');renderChampions();}
 function filterPool(p){currentPoolFilter=p;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.toggle('active',b.textContent===p||(p==='all'&&b.textContent==='全部')));renderChampions();}
 function getPoolClass(p){return p==='S+'?'pool-Splus':'pool-'+p.charAt(0);}
 function renderChampions(){
@@ -274,6 +376,67 @@ function renderChampions(){
   sp.forEach(pool=>{const pc=f.filter(x=>x.myPool===pool);h+=`<div class="pool-group"><div class="pool-title"><span class="pool-badge ${getPoolClass(pool)}">${pool}</span><span class="pool-count">${pc.length} 個</span></div><div class="champion-grid">`;pc.forEach(ch=>{const wr=ch.winRate?(ch.winRate*100).toFixed(1)+'%':'N/A';const ih=ch.image?`<img src="${ch.image}" alt="${ch.name}" data-champ="${ch.name}" class="champ-img">`:`<span class="champion-icon-placeholder">${ch.name.charAt(0)}</span>`;h+=`<div class="champion-card" onclick="showFights('${ch.name}')"><div class="champion-icon">${ih}</div><div class="champion-name">${ch.name}</div><div class="champion-role">${ch.role||'N/A'}</div><div class="champion-wr">WR: ${wr}</div></div>`;});h+='</div></div>';});
   c.innerHTML=h;
   c.querySelectorAll('.champ-img').forEach(img=>{img.onerror=function(){const n=this.getAttribute('data-champ');this.outerHTML=`<span class="champion-icon-placeholder">${n?n.charAt(0):'?'}</span>`;};});
+}
+// Leaderboard
+function switchPoolView(v){
+  poolView=v;
+  document.getElementById('vt-gallery').classList.toggle('active',v==='gallery');
+  document.getElementById('vt-leaderboard').classList.toggle('active',v==='leaderboard');
+  document.getElementById('pool-gallery-header').style.display=v==='gallery'?'':'none';
+  document.getElementById('champion-container').style.display=v==='gallery'?'':'none';
+  document.getElementById('lb-sub-toggle').style.display=v==='leaderboard'?'flex':'none';
+  document.getElementById('leaderboard-container').style.display=v==='leaderboard'?'':'none';
+  if(v==='leaderboard')renderLeaderboard();
+}
+function switchLbLayout(l){lbLayout=l;document.getElementById('lb-by-lane').classList.toggle('active',l==='by-lane');document.getElementById('lb-all').classList.toggle('active',l==='all');renderLeaderboard();}
+function calcChampScores(){
+  const map={};
+  fights.forEach(f=>{
+    const name=f.champion;if(!name)return;
+    if(!map[name])map[name]={name,sCount:0,aCount:0,kills:0,lane:f.line||'',fightCount:0};
+    const e=map[name];e.fightCount++;e.kills+=f.kills||0;
+    const g=f.grade||'';
+    if(g==='S'||g==='S+')e.sCount++;
+    else if(g==='A'||g==='A+'||g==='A-')e.aCount++;
+  });
+  Object.values(map).forEach(e=>{e.score=e.sCount*2+e.aCount;});
+  return Object.values(map);
+}
+function getChampImgForLb(n){const c=champions.find(x=>x.name===n);if(c&&c.image)return c.image;return '';}
+function renderLbRow(e,rank){
+  const rc=rank===1?'top1':rank===2?'top2':rank===3?'top3':'';
+  const img=getChampImgForLb(e.name);
+  const ih=img?`<div class="lb-icon"><img src="${img}" alt="${e.name}" onerror="this.style.display='none';this.parentNode.textContent='${e.name.charAt(0)}'"></div>`:`<div class="lb-icon">${e.name.charAt(0)}</div>`;
+  return `<div class="lb-row" onclick="showFights('${e.name}')">
+    <div class="lb-rank ${rc}">#${rank}</div>
+    ${ih}
+    <div class="lb-name">${e.name}<div style="font-size:11px;color:#6e7681;font-weight:400;">${e.lane||''} · ${e.fightCount}場</div></div>
+    <div class="lb-stats">
+      <div class="lb-stat"><div class="lb-stat-val s">${e.sCount}</div><div>S (×2)</div></div>
+      <div class="lb-stat"><div class="lb-stat-val a">${e.aCount}</div><div>A (×1)</div></div>
+      <div class="lb-stat"><div class="lb-stat-val k">${e.kills}</div><div>Kills</div></div>
+    </div>
+    <div class="lb-score">${e.score}分</div>
+  </div>`;
+}
+function renderLeaderboard(){
+  const container=document.getElementById('leaderboard-container');
+  const all=calcChampScores().filter(e=>e.score>0);
+  if(!all.length){container.innerHTML='<div class="lb-empty">暫無 S/A 級戰績數據</div>';return;}
+  if(lbLayout==='all'){
+    all.sort((a,b)=>b.score-a.score||b.kills-a.kills);
+    container.innerHTML='<div class="lb-lane-group"><div class="lb-lane-title">🏆 全部英雄積分榜</div>'+all.map((e,i)=>renderLbRow(e,i+1)).join('')+'</div>';
+  }else{
+    const lanes=['Baron','Jungle','Mid','Dragon','Support'];
+    const ln={Baron:'⚔️ Baron (Top)',Jungle:'🌿 Jungle',Mid:'✨ Mid',Dragon:'🐉 Dragon',Support:'🛡️ Support'};
+    let html='';
+    lanes.forEach(lane=>{
+      const lc=all.filter(e=>e.lane===lane).sort((a,b)=>b.score-a.score||b.kills-a.kills);
+      if(!lc.length)return;
+      html+=`<div class="lb-lane-group"><div class="lb-lane-title">${ln[lane]||lane}</div>`+lc.map((e,i)=>renderLbRow(e,i+1)).join('')+'</div>';
+    });
+    container.innerHTML=html||'<div class="lb-empty">暫無數據</div>';
+  }
 }
 function showFights(n){filtChamp=n;filtLane='';filtType='';document.getElementById('filt-champ').value=n;document.getElementById('filt-lane').value='';document.getElementById('filt-type').value='';document.querySelectorAll('.bottom-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.querySelector('.bottom-tab:nth-child(3)').classList.add('active');document.getElementById('page-fights').classList.add('active');currentSort='date';sortDirection='desc';renderFightsTab();}
 function initFightsTab(){const s=document.getElementById('filt-champ');s.innerHTML='<option value="">全部英雄</option>'+[...new Set(fights.map(f=>f.champion).filter(Boolean))].sort().map(c=>`<option value="${c}">${c}</option>`).join('');const types=[...new Set(fights.map(f=>f.opponentMatchupType).filter(Boolean))].sort();document.getElementById('filt-type').innerHTML='<option value="">全部類型</option>'+types.map(t=>`<option value="${t}">${t}</option>`).join('');renderFightsTab();}
@@ -302,7 +465,7 @@ function renderFightsTab(){
     const li={Top:'⚔️',Jungle:'🌿',Mid:'✨',Dragon:'🐉',Baron:'👹',Support:'🛡️'};
     const lic=li[f.line]||'📍';
     const mb=[f.line?lic+' '+f.line:'','S'+f.season,f.opponentMatchupType].filter(Boolean).join(' · ');
-    return `<div class="fight-item"><div class="fight-date-banner"><span>${ds}</span></div><div class="fight-body"><div class="fight-left"><div class="fight-meta-row"><span class="fight-grade-badge" style="color:${gc}">${f.grade||'-'}</span><span class="fight-meta-spacer"></span><span class="fight-meta-text">${mb}</span></div><div class="fight-main"><div class="fight-side me">${getChampIconHtml(f.champion,'me')}<div><div class="fight-champ-name">${f.champion}</div><div class="fight-champ-kda">${mk}</div></div></div><div class="fight-vs-text">VS</div><div class="fight-side opp"><div><div class="fight-champ-name">${on}</div><div class="fight-champ-kda">${ok}</div></div>${getChampIconHtml(on,'opp')}</div></div><div class="fight-stats"><div class="fight-stat"><div class="lbl">Gold</div><div class="val">${f.goldEarned??'-'}</div></div><div class="fight-stat"><div class="lbl">Dmg</div><div class="val">${f.damageDealt??'-'}</div></div><div class="fight-stat"><div class="lbl">CC</div><div class="val">${f.ccDuration??0}s</div></div><div class="fight-stat"><div class="lbl">Ward</div><div class="val">${f.wards??0}</div></div><div class="fight-stat"><div class="lbl">Twr</div><div class="val">${f.towerDestroyed??0}</div></div><div class="fight-stat"><div class="lbl">Epic</div><div class="val">${f.epicMonster??0}</div></div><div class="fight-stat"><div class="lbl">TFP</div><div class="val">${f.teamFightPresence!=null?Math.round(f.teamFightPresence*100)+'%':'-'}</div></div></div></div><div class="fight-right">${shots.length?'<div class="fight-screenshots">'+shots.map(p=>`<img class="fight-shot" src="${p}" onclick="event.stopPropagation();openLightbox('${p}')" onerror="this.style.display=\'none\'">`).join('')+'</div>':'<div style="color:#484f58;font-size:11px;text-align:center;">無截圖</div>'}${f.link?`<a class="fight-vid-link" href="${f.link}" target="_blank">▶ 影片</a>`:''}</div></div></div>`;
+    return `<div class="fight-item"><div class="fight-date-banner"><span>${ds}</span></div><div class="fight-body"><div class="fight-left"><div class="fight-meta-row"><span class="fight-grade-badge" style="color:${gc}">${f.grade||'-'}</span><span class="fight-meta-spacer"></span><span class="fight-meta-text">${mb}</span></div><div class="fight-main"><div class="fight-side me">${getChampIconHtml(f.champion,'me')}<div><div class="fight-champ-name">${f.champion}</div><div class="fight-champ-kda">${mk}</div></div></div><div class="fight-vs-text">VS</div><div class="fight-side opp"><div><div class="fight-champ-name">${on}</div><div class="fight-champ-kda">${ok}</div></div>${getChampIconHtml(on,'opp')}</div></div><div class="fight-stats"><div class="fight-stat"><div class="lbl">Gold</div><div class="val">${f.goldEarned??'-'}</div></div><div class="fight-stat"><div class="lbl">Dmg</div><div class="val">${f.damageDealt??'-'}</div></div><div class="fight-stat"><div class="lbl">CC</div><div class="val">${f.ccDuration??0}s</div></div><div class="fight-stat"><div class="lbl">Ward</div><div class="val">${f.wards??0}</div></div><div class="fight-stat"><div class="lbl">Twr</div><div class="val">${f.towerDestroyed??0}</div></div><div class="fight-stat"><div class="lbl">Epic</div><div class="val">${f.epicMonster??0}</div></div><div class="fight-stat"><div class="lbl">TFP</div><div class="val">${f.teamFightPresence!=null?Math.round(f.teamFightPresence*100)+'%':'-'}</div></div></div></div><div class="fight-right">${shots.length?'<div class="fight-screenshots">'+shots.map(p=>`<img class="fight-shot" src="${p}" onclick="openLightbox('${p}')" onerror="this.style.display='none'">`).join('')+'</div>':'<div style="color:#484f58;font-size:11px;text-align:center;">無截圖</div>'}${f.link?`<a class="fight-vid-link" href="${f.link}" target="_blank">▶ 影片</a>`:''}</div></div></div>`;
   }).join('');
   document.querySelectorAll('.fight-champ-img').forEach(img=>{img.onerror=function(){const n=this.getAttribute('data-champ');this.outerHTML=n?n.charAt(0):'?';};});
 }
