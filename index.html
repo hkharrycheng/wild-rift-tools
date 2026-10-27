@@ -104,48 +104,52 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .footer { text-align: center; padding: 20px; color: #484f58; font-size: 12px; border-top: 1px solid #21262d; margin-top: 40px; }
 .fights-toolbar { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
 .filt-select { flex: 1; min-width: 100px; padding: 7px 10px; border-radius: 6px; border: 1px solid #30363d; background: #0d1117; color: #e6edf3; font-size: 12px; cursor: pointer; }
-#fights-summary { background: linear-gradient(135deg, #0f1f3d 0%, #0d1117 100%) !important; border: 1px solid #1f3a5f !important; border-radius: 12px !important; padding: 16px 20px !important; margin-bottom: 12px !important; display: flex !important; flex-direction: row !important; gap: 24px !important; align-items: center !important; flex-wrap: nowrap !important; }
+#fights-summary { background: linear-gradient(135deg, #0f1f3d 0%, #0d1117 100%) !important; border: 1px solid #1f3a5f !important; border-radius: 12px !important; padding: 16px 20px !important; margin-bottom: 12px !important; display: flex !important; flex-direction: row !important; gap: 20px !important; align-items: center !important; flex-wrap: wrap !important; }
 #fights-summary .sum-left { display: flex !important; align-items: center !important; gap: 14px !important; flex-shrink: 0 !important; }
 #fights-summary .sum-pic { width: 72px !important; height: 72px !important; border-radius: 12px !important; border: 2px solid #1f6feb !important; object-fit: cover !important; background: #1f2937 !important; flex-shrink: 0 !important; }
 #fights-summary .sum-name { font-size: 16px !important; font-weight: 700 !important; color: #fff !important; }
 #fights-summary .sum-sub { font-size: 11px !important; color: #8b949e !important; margin-top: 2px !important; }
-#fights-summary .sum-badges { display: flex !important; gap: 10px !important; flex-shrink: 0 !important; }
+#fights-summary .sum-badges { display: flex !important; gap: 10px !important; flex-shrink: 0 !important; flex-wrap: wrap !important; }
 #fights-summary .badge { background: rgba(0,0,0,0.4) !important; border: 1px solid #30363d !important; border-radius: 8px !important; padding: 8px 14px !important; text-align: center !important; min-width: 60px !important; }
 #fights-summary .badge .big { font-size: 20px !important; font-weight: 800 !important; color: #f0b429 !important; display: block !important; line-height: 1.2 !important; }
 #fights-summary .badge .small { font-size: 9px !important; color: #8b949e !important; text-transform: uppercase !important; }
 #fights-summary .badge.a .big { color: #58a6ff !important; }
-#fights-summary .sum-bars { flex: 1 !important; display: flex !important; flex-direction: column !important; gap: 6px !important; min-width: 0 !important; }
+#fights-summary .sum-bars { flex: 1 !important; display: flex !important; flex-direction: column !important; gap: 6px !important; min-width: 200px !important; }
 #fights-summary .bar-row { display: flex !important; align-items: center !important; gap: 8px !important; font-size: 11px !important; }
-#fights-summary .bar-lbl { width: 100px !important; color: #8b949e !important; text-align: right !important; flex-shrink: 0 !important; }
+#fights-summary .bar-lbl { width: 90px !important; color: #8b949e !important; text-align: right !important; flex-shrink: 0 !important; font-size: 11px !important; }
 #fights-summary .bar-track { flex: 1 !important; height: 6px !important; background: rgba(255,255,255,0.06) !important; border-radius: 3px !important; overflow: hidden !important; }
 #fights-summary .bar-fill { height: 100% !important; background: linear-gradient(90deg, #1f6feb, #58a6ff) !important; border-radius: 3px !important; }
-#fights-summary .bar-val { width: 70px !important; color: #e6edf3 !important; font-weight: 600 !important; flex-shrink: 0 !important; }
-.fight-item { margin-bottom: 14px; background: #161b22; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; }
-.fight-date-banner { background: linear-gradient(90deg, #1f3a5f33, #161b22); padding: 8px 16px; font-size: 12px; color: #8b949e; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #21262d; }
-.fight-body { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 16px 20px; }
-.fight-main { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-.fight-side { display: flex; align-items: center; gap: 10px; }
-.fight-side.me { justify-content: flex-start; }
-.fight-side.opp { justify-content: flex-end; text-align: right; }
-.fight-side .fight-champ-name { font-size: 16px; font-weight: 600; color: #e6edf3; }
-.fight-side.me .fight-champ-kda { color: #58a6ff; font-weight: 700; font-size: 15px; }
-.fight-side.opp .fight-champ-kda { color: #ff6b6b; font-weight: 600; font-size: 14px; }
-.fight-vs-text { font-size: 12px; color: #484f58; font-weight: 700; }
-.fight-grade-badge { font-size: 28px; font-weight: 900; min-width: 40px; text-align: center; text-shadow: 0 0 10px currentColor; }
-.fight-meta-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-.fight-meta-spacer { flex: 1; }
-.fight-meta-text { font-size: 12px; color: #8b949e; }
-.fight-screenshots { display: flex; flex-direction: row; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
-.fight-shot { width: 280px; flex-shrink: 0; border-radius: 8px; border: 1px solid #30363d; cursor: pointer; }
-.fight-champ-img { width: 40px; height: 40px; border-radius: 50%; background: #30363d; display: inline-flex; align-items: center; justify-content: center; font-size: 14px; color: #e6edf3; object-fit: cover; }
+#fights-summary .bar-val { width: 65px !important; color: #e6edf3 !important; font-weight: 600 !important; flex-shrink: 0 !important; font-size: 11px !important; }
+.fight-item { margin-bottom: 12px; background: #161b22; border: 1px solid #30363d; border-radius: 10px; overflow: hidden; }
+.fight-row-head { cursor: pointer; padding: 10px 14px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid transparent; transition: background 0.15s; }
+.fight-row-head:hover { background: rgba(255,255,255,0.03); }
+.fight-item.expanded .fight-row-head { border-bottom-color: #21262d; }
+.fight-date-banner { padding: 6px 14px; font-size: 11px; color: #8b949e; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(90deg, #1f3a5f33, #161b22); }
+.fight-chevron { color: #6e7681; font-size: 12px; transition: transform 0.2s; margin-left: auto; }
+.fight-item.expanded .fight-chevron { transform: rotate(180deg); }
+.fight-main { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+.fight-side { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.fight-side.me { flex: 1; justify-content: flex-start; }
+.fight-side.opp { flex: 1; justify-content: flex-end; text-align: right; }
+.fight-side .fight-champ-name { font-size: 14px; font-weight: 600; color: #e6edf3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fight-side.me .fight-champ-kda { color: #58a6ff; font-weight: 700; font-size: 13px; }
+.fight-side.opp .fight-champ-kda { color: #ff6b6b; font-weight: 600; font-size: 12px; }
+.fight-vs-text { font-size: 11px; color: #484f58; font-weight: 700; flex-shrink: 0; }
+.fight-grade-badge { font-size: 22px; font-weight: 900; min-width: 28px; text-align: center; text-shadow: 0 0 10px currentColor; flex-shrink: 0; }
+.fight-meta-inline { font-size: 11px; color: #8b949e; flex-shrink: 0; }
+.fight-details { display: none; padding: 12px 14px; background: #0d1117; }
+.fight-item.expanded .fight-details { display: block; }
+.fight-stats { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 10px; background: #161b22; border-radius: 8px; margin-bottom: 12px; }
+.fight-stat { text-align: center; }
+.fight-stat .lbl { color: #6e7681; font-size: 9px; text-transform: uppercase; letter-spacing: 0.3px; }
+.fight-stat .val { color: #e6edf3; font-weight: 700; font-size: 13px; }
+.fight-screenshots { display: flex; flex-direction: row; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 10px; -webkit-overflow-scrolling: touch; }
+.fight-shot { width: 260px; flex-shrink: 0; border-radius: 8px; border: 1px solid #30363d; cursor: pointer; }
+.fight-champ-img { width: 34px; height: 34px; border-radius: 50%; background: #30363d; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; color: #e6edf3; object-fit: cover; flex-shrink: 0; }
 .fight-champ-img.opp { border: 2px solid #ff6b6b66; }
 .fight-champ-img.me { border: 2px solid #58a6ff66; }
-.fight-stats { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; padding: 8px; background: #0d1117; border-radius: 8px; }
-.fight-stat { text-align: center; }
-.fight-stat .lbl { color: #6e7681; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3px; }
-.fight-stat .val { color: #e6edf3; font-weight: 700; font-size: 15px; }
-.fight-right { display: flex; flex-direction: column; gap: 8px; justify-content: center; }
-.fight-vid-link { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 6px; background: rgba(255, 69, 58, 0.15); color: #ff6b6b; text-decoration: none; font-size: 12px; align-self: flex-start; }
+.fight-vid-link { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; border-radius: 6px; background: rgba(255, 69, 58, 0.15); color: #ff6b6b; text-decoration: none; font-size: 12px; }
+.fight-no-shots { color: #484f58; font-size: 11px; text-align: center; padding: 8px; }
 .no-fights { text-align: center; color: #6e7681; padding: 40px; }
 .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 99999; justify-content: center; align-items: center; cursor: zoom-out; }
 .lightbox.open { display: flex; }
@@ -161,6 +165,18 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-
 .sort-label { font-size: 13px; color: #8b949e; }
 .sort-btn { padding: 4px 10px; border-radius: 6px; font-size: 12px; cursor: pointer; border: 1px solid #30363d; background: #21262d; color: #8b949e; }
 .sort-btn.active { background: #1f6feb; color: white; border-color: #1f6feb; }
+@media (max-width: 700px) {
+  .content { padding: 12px 12px 90px; }
+  .fight-stats { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .fight-stat:nth-child(n+5) { display: none; }
+  .fight-shot { width: 220px; }
+  #fights-summary { gap: 12px !important; padding: 12px !important; }
+  #fights-summary .sum-bars { min-width: 100%; }
+  #fights-summary .sum-pic { width: 56px !important; height: 56px !important; }
+  #fights-summary .badge { padding: 6px 10px !important; min-width: 50px !important; }
+  #fights-summary .badge .big { font-size: 16px !important; }
+  .fight-meta-inline { display: none; }
+}
 </style>
 </head>
 <body>
@@ -217,6 +233,7 @@ function initFightsTab(){const s=document.getElementById('filt-champ');s.innerHT
 function onFiltChange(){filtChamp=document.getElementById('filt-champ').value;filtLane=document.getElementById('filt-lane').value;filtType=document.getElementById('filt-type').value;fightsSortTouched=false;renderFightsTab();}
 function resetFilt(){filtChamp='';filtLane='';filtType='';document.getElementById('filt-champ').value='';document.getElementById('filt-lane').value='';document.getElementById('filt-type').value='';fightsSortTouched=false;renderFightsTab();}
 function getFilteredFights(){return fights.filter(f=>{if(filtChamp&&f.champion!==filtChamp)return false;if(filtLane&&f.line!==filtLane)return false;if(filtType&&f.opponentMatchupType!==filtType)return false;return true;});}
+function toggleFight(el){el.closest('.fight-item').classList.toggle('expanded');}
 function renderFightsTab(){
   const list=getFilteredFights();
   if(!fightsSortTouched){currentSort='fightDate';sortDirection='asc';}
@@ -238,7 +255,7 @@ function renderFightsTab(){
     const li={Top:'⚔️',Jungle:'🌿',Mid:'✨',Dragon:'🐉',Baron:'👹',Support:'🛡️'};
     const lic=li[f.line]||'📍';
     const mb=[f.line?lic+' '+f.line:'','S'+f.season,f.opponentMatchupType].filter(Boolean).join(' · ');
-    return `<div class="fight-item"><div class="fight-date-banner"><span>${ds}</span></div><div class="fight-body"><div class="fight-left"><div class="fight-meta-row"><span class="fight-grade-badge" style="color:${gc}">${f.grade||'-'}</span><span class="fight-meta-spacer"></span><span class="fight-meta-text">${mb}</span></div><div class="fight-main"><div class="fight-side me">${getChampIconHtml(f.champion,'me')}<div><div class="fight-champ-name">${f.champion}</div><div class="fight-champ-kda">${mk}</div></div></div><div class="fight-vs-text">VS</div><div class="fight-side opp"><div><div class="fight-champ-name">${on}</div><div class="fight-champ-kda">${ok}</div></div>${getChampIconHtml(on,'opp')}</div></div><div class="fight-stats"><div class="fight-stat"><div class="lbl">Gold</div><div class="val">${f.goldEarned??'-'}</div></div><div class="fight-stat"><div class="lbl">Dmg</div><div class="val">${f.damageDealt??'-'}</div></div><div class="fight-stat"><div class="lbl">CC</div><div class="val">${f.ccDuration??0}s</div></div><div class="fight-stat"><div class="lbl">Ward</div><div class="val">${f.wards??0}</div></div><div class="fight-stat"><div class="lbl">Twr</div><div class="val">${f.towerDestroyed??0}</div></div><div class="fight-stat"><div class="lbl">Epic</div><div class="val">${f.epicMonster??0}</div></div><div class="fight-stat"><div class="lbl">TFP</div><div class="val">${f.teamFightPresence!=null?Math.round(f.teamFightPresence*100)+'%':'-'}</div></div></div></div><div class="fight-right">${shots.length?'<div class="fight-screenshots">'+shots.map(p=>`<img class="fight-shot" src="${p}" onclick="openLightbox('${p}')" onerror="this.style.display=\'none\'">`).join('')+'</div>':'<div style="color:#484f58;font-size:11px;text-align:center;">無截圖</div>'}${f.link?`<a class="fight-vid-link" href="${f.link}" target="_blank">▶ 影片</a>`:''}</div></div></div>`;
+    return `<div class="fight-item"><div class="fight-date-banner"><span>${ds}</span><span>${mb}</span></div><div class="fight-row-head" onclick="toggleFight(this)"><span class="fight-grade-badge" style="color:${gc}">${f.grade||'-'}</span><div class="fight-main"><div class="fight-side me">${getChampIconHtml(f.champion,'me')}<div><div class="fight-champ-name">${f.champion}</div><div class="fight-champ-kda">${mk}</div></div></div><div class="fight-vs-text">VS</div><div class="fight-side opp"><div><div class="fight-champ-name">${on}</div><div class="fight-champ-kda">${ok}</div></div>${getChampIconHtml(on,'opp')}</div></div><span class="fight-chevron">▼</span></div><div class="fight-details"><div class="fight-stats"><div class="fight-stat"><div class="lbl">Gold</div><div class="val">${f.goldEarned??'-'}</div></div><div class="fight-stat"><div class="lbl">Dmg</div><div class="val">${f.damageDealt??'-'}</div></div><div class="fight-stat"><div class="lbl">CC</div><div class="val">${f.ccDuration??0}s</div></div><div class="fight-stat"><div class="lbl">Ward</div><div class="val">${f.wards??0}</div></div><div class="fight-stat"><div class="lbl">Twr</div><div class="val">${f.towerDestroyed??0}</div></div><div class="fight-stat"><div class="lbl">Epic</div><div class="val">${f.epicMonster??0}</div></div><div class="fight-stat"><div class="lbl">TFP</div><div class="val">${f.teamFightPresence!=null?Math.round(f.teamFightPresence*100)+'%':'-'}</div></div></div>${shots.length?'<div class="fight-screenshots">'+shots.map(p=>`<img class="fight-shot" src="${p}" onclick="event.stopPropagation();openLightbox('${p}')" onerror="this.style.display=\'none\'">`).join('')+'</div>':'<div class="fight-no-shots">無截圖</div>'}${f.link?`<a class="fight-vid-link" href="${f.link}" target="_blank" onclick="event.stopPropagation()">▶ 影片</a>`:''}</div></div>`;
   }).join('');
 }
 function renderSummary(list){
