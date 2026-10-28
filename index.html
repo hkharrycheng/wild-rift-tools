@@ -974,7 +974,8 @@ function renderChampions(){
     h+=`<div class="pool-group"><div class="pool-title"><span class="pool-badge ${getPoolClass(pool)}">${pool}</span><span class="pool-count">${pc.length}</span></div><div class="champion-grid">`;
     pc.forEach(ch=>{
       const wr=ch.winRate?(ch.winRate*100).toFixed(1)+'%':'N/A';
-      const ih=ch.image?`<img src="${ch.image}" alt="${ch.name}" data-champ="${ch.name}" class="champ-img">`:`<span class="champion-icon-placeholder">${ch.name.charAt(0)}</span>`;
+      const champImgSrc=ch.image?(localStorage.getItem('j07_worker')!=='off'?WORKER+'/shot?file_token=':'')+ch.image:'';
+      const ih=champImgSrc?`<img src="${champImgSrc}" alt="${ch.name}" data-champ="${ch.name}" class="champ-img">`:`<span class="champion-icon-placeholder">${ch.name.charAt(0)}</span>`;
       h+=`<div class="champion-card" onclick="showFights('${ch.name}')"><div class="champion-icon">${ih}</div><div class="champion-name">${ch.name}</div><div class="champion-role">${ch.role||'N/A'}</div><div class="champion-wr">WR: ${wr}</div></div>`;
     });
     h+='</div></div>';
@@ -1015,7 +1016,7 @@ function calcChampScores(){
   Object.values(map).forEach(e=>{e.score=e.sCount*2+e.aCount;});
   return Object.values(map);
 }
-function getChampImgForLb(n){const c=champions.find(x=>x.name===n);if(c&&c.image)return c.image;return '';}
+function getChampImgForLb(n){const c=champions.find(x=>x.name===n);if(c&&c.image){return (localStorage.getItem('j07_worker')!=='off'?WORKER+'/shot?file_token=':'')+c.image;}return '';}
 function updateLaneButtons(){
   const all=calcChampScores().filter(e=>e.score>0);
   const lanes=['Baron','Jungle','Mid','Dragon','Support'];
