@@ -696,6 +696,19 @@ body {
   align-self: flex-start;
 }
 .no-fights { text-align: center; color: #6e7681; padding: 40px; }
+@media (max-width: 768px) {
+  .fight-body { grid-template-columns: 1fr !important; gap: 12px !important; padding: 12px !important; }
+  .fight-main { gap: 8px !important; }
+  .fight-side .fight-champ-name { font-size: 14px !important; }
+  .fight-side .fight-champ-kda { font-size: 12px !important; }
+  .fight-grade-badge { font-size: 22px !important; min-width: 32px !important; }
+  .fight-champ-img { width: 32px !important; height: 32px !important; }
+  .fight-stats { grid-template-columns: repeat(4, 1fr) !important; gap: 4px !important; padding: 6px !important; }
+  .fight-stat .val { font-size: 13px !important; }
+  .fight-stat .lbl { font-size: 9px !important; }
+  .fight-shot { width: 220px !important; }
+  .fight-right { flex-direction: column !important; }
+}
 .lightbox {
   display: none;
   position: fixed; inset: 0;
@@ -988,8 +1001,8 @@ function renderLbRow(e,rank){
     ${ih}
     <div class="lb-name">${e.name}<div style="font-size:11px;color:#6e7681;font-weight:400;">${e.lane||''} · ${e.fightCount} games</div></div>
     <div class="lb-stats">
-      <div class="lb-stat"><div class="lb-stat-val s">${e.sCount}</div><div>S (×2)</div></div>
-      <div class="lb-stat"><div class="lb-stat-val a">${e.aCount}</div><div>A (×1)</div></div>
+      <div class="lb-stat"><div class="lb-stat-val s">${e.sCount}</div><div>S</div></div>
+      <div class="lb-stat"><div class="lb-stat-val a">${e.aCount}</div><div>A</div></div>
       <div class="lb-stat"><div class="lb-stat-val k">${e.kills}</div><div>Kills</div></div>
     </div>
     <div class="lb-score">${e.score} pts</div>
