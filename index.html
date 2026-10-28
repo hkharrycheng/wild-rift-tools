@@ -1039,14 +1039,8 @@ function renderLeaderboard(){
     if(!lc.length){container.innerHTML='<div class="lb-empty">No data</div>';return;}
     container.innerHTML='<div class="lb-lane-group"><div class="lb-lane-title">'+(laneNames[lbLaneFilter]||lbLaneFilter)+'</div>'+lc.map((e,i)=>renderLbRow(e,i+1)).join('')+'</div>';
   } else {
-    const lanes=['Baron','Jungle','Mid','Dragon','Support'];
-    let html='';
-    lanes.forEach(lane=>{
-      const lc=all.filter(e=>e.lane===lane).sort((a,b)=>b.score-a.score||b.kills-a.kills);
-      if(!lc.length)return;
-      html+=`<div class="lb-lane-group"><div class="lb-lane-title">${laneNames[lane]||lane}</div>`+lc.map((e,i)=>renderLbRow(e,i+1)).join('')+'</div>';
-    });
-    container.innerHTML=html||'<div class="lb-empty">No data</div>';
+    const mixed=all.sort((a,b)=>b.score-a.score||b.kills-a.kills);
+    container.innerHTML=mixed.map((e,i)=>renderLbRow(e,i+1)).join('')||'<div class="lb-empty">No data</div>';
   }
 }
 
