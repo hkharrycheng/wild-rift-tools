@@ -709,12 +709,14 @@ body {
   .fight-side .fight-champ-kda { font-size: 12px !important; }
   .fight-grade-badge { font-size: 20px !important; min-width: 28px !important; }
   .fight-champ-img { width: 28px !important; height: 28px !important; }
-  .fight-meta-row { gap: 8px !important; flex-wrap: wrap !important; }
-  .fight-meta-text { font-size: 10px !important; overflow: hidden !important; text-overflow: ellipsis !important; white-space: nowrap !important; max-width: 55% !important; }
+  .fight-meta-row { gap: 6px !important; flex-wrap: wrap !important; align-items: center !important; }
+  .fight-meta-spacer { display: none !important; }
+  .fight-meta-text { font-size: 10px !important; white-space: normal !important; max-width: 100% !important; flex: 1 !important; }
   .fight-stats { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; padding: 6px !important; }
   .fight-stat .val { font-size: 12px !important; }
   .fight-stat .lbl { font-size: 8px !important; }
-  .fight-shot { width: 180px !important; }
+  .fight-screenshots { gap: 6px !important; }
+  .fight-shot { width: auto !important; max-width: 46% !important; height: auto !important; }
   .fight-right { flex-direction: column !important; }
   #fights-summary { flex-direction: column !important; flex-wrap: wrap !important; gap: 12px !important; padding: 12px !important; overflow: hidden !important; }
   #fights-summary .sum-left { flex-wrap: wrap !important; }
