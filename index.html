@@ -1016,7 +1016,7 @@ function calcChampScores(){
   Object.values(map).forEach(e=>{e.score=e.sCount*2+e.aCount;});
   return Object.values(map);
 }
-function getChampImgForLb(n){const c=champions.find(x=>x.name===n);if(c&&c.image){return (localStorage.getItem('j07_worker')!=='off'?WORKER+'/shot?file_token=':'')+c.image;}return '';}
+function getChampImgForLb(n){const c=champions.find(x=>x.name===n);if(c&&c.image){return (localStorage.getItem('j07_worker')!=='off'?WORKER+'/shot?file_token=':'')+c.image;}return n?`champion-images/${n}.webp`:'';}
 function updateLaneButtons(){
   const all=calcChampScores().filter(e=>e.score>0);
   const lanes=['Baron','Jungle','Mid','Dragon','Support'];
