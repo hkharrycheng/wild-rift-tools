@@ -13,6 +13,7 @@ body {
   background: #0d1117;
   color: #e6edf3;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 .header {
   background: linear-gradient(135deg, #1a2332 0%, #0d1117 100%);
@@ -699,20 +700,28 @@ body {
 @media (max-width: 768px) {
   .fight-body { grid-template-columns: 1fr !important; gap: 10px !important; padding: 10px !important; }
   .fight-main { flex-direction: column !important; gap: 4px !important; align-items: stretch !important; }
-  .fight-side { justify-content: flex-start !important; }
+  .fight-side { justify-content: flex-start !important; min-width: 0 !important; }
   .fight-side.opp { justify-content: flex-end !important; text-align: right !important; }
+  .fight-side.opp > div { min-width: 0 !important; }
+  .fight-side.opp .fight-champ-name, .fight-side.opp .fight-champ-kda { overflow: hidden !important; text-overflow: ellipsis !important; white-space: nowrap !important; }
   .fight-vs-text { text-align: center !important; font-size: 10px !important; }
   .fight-side .fight-champ-name { font-size: 14px !important; }
   .fight-side .fight-champ-kda { font-size: 12px !important; }
   .fight-grade-badge { font-size: 20px !important; min-width: 28px !important; }
   .fight-champ-img { width: 28px !important; height: 28px !important; }
   .fight-meta-row { gap: 8px !important; flex-wrap: wrap !important; }
-  .fight-meta-text { font-size: 10px !important; overflow: hidden !important; text-overflow: ellipsis !important; white-space: nowrap !important; max-width: 50% !important; }
+  .fight-meta-text { font-size: 10px !important; overflow: hidden !important; text-overflow: ellipsis !important; white-space: nowrap !important; max-width: 55% !important; }
   .fight-stats { grid-template-columns: repeat(3, 1fr) !important; gap: 4px !important; padding: 6px !important; }
   .fight-stat .val { font-size: 12px !important; }
   .fight-stat .lbl { font-size: 8px !important; }
   .fight-shot { width: 180px !important; }
   .fight-right { flex-direction: column !important; }
+  #fights-summary { flex-direction: column !important; flex-wrap: wrap !important; gap: 12px !important; padding: 12px !important; overflow: hidden !important; }
+  #fights-summary .sum-left { flex-wrap: wrap !important; }
+  #fights-summary .sum-bars { width: 100% !important; }
+  #fights-summary .bar-lbl { width: 80px !important; font-size: 10px !important; }
+  #fights-summary .bar-val { width: 55px !important; font-size: 10px !important; }
+  .content { padding: 12px 12px 84px !important; }
 }
 .sort-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 10px 0; }
 .sort-label { color: #8b949e; font-size: 13px; margin-right: 4px; }
