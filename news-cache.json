@@ -1,6 +1,14 @@
 {
- "fetched_at": "2026-11-25 07:47",
+ "fetched_at": "2026-11-25 21:24",
  "official": [
+  {
+   "title": "Wild Rift Patch Notes 7.3g",
+   "url": "https://wildrift.leagueoflegends.com/en-gb/news/game-updates/wild-rift-patch-notes-7-3g",
+   "category": "Game Updates",
+   "published": "2026-11-25",
+   "image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/716c53f3b5694852fae630a0c56a35935a95d7b1-1920x1080.jpg?accountingTag=WR",
+   "description": "Champion buffs, marksman adjustments, and new AAA ARAM builds headline this round of balance changes!"
+  },
   {
    "title": "Wild Rift Patch Notes 7.3f",
    "url": "https://wildrift.leagueoflegends.com/en-gb/news/game-updates/wild-rift-patch-notes-7-3f",
@@ -1000,14 +1008,6 @@
    "published": "2023-12-06",
    "image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/2d47570bd0066bcc0965f22fda9e166cb8a764bf-1920x1080.jpg?accountingTag=WR",
    "description": "This patch is a doozy! Welcome to the first patch of December."
-  },
-  {
-   "title": "Wild Rift Patch Notes 4.4b",
-   "url": "https://wildrift.leagueoflegends.com/en-gb/news/game-updates/wild-rift-patch-notes-4-4b/",
-   "category": "Game Updates",
-   "published": "2023-11-22",
-   "image": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/news_live/93b1d4a1663046141b41d29bc97c0c8027b41125-1920x1080.jpg?accountingTag=WR",
-   "description": "This patch we are sprinting onto the Rift with Sivir! Lots of balance updates coming your way as well. Strap in and welcome to Patch 4.4b!"
   }
  ],
  "youtube": [
